@@ -51,7 +51,14 @@ app.get('/api/products/:productId', (req, res, next) => {
   const id = [productId];
 
   db.query(sql, id)
-    .then(result => res.status(200).json(result.rows[0]))
+    .then(result => {
+      const product = result.rows[0];
+      if (!product) {
+        next();
+      } else {
+        res.status(200).json(product);
+      }
+    })
     .catch(err => next(err));
 
 });
