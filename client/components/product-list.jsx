@@ -29,7 +29,7 @@ class ProductList extends React.Component {
     const productCards = [];
     for (let i = 0; i < this.state.products.length; i++) {
       productCards.push(
-        <ProductListItem key={this.state.products[i].id}
+        <ProductListItem key={this.state.products[i].productId}
           image={this.state.products[i].image}
           name={this.state.products[i].name}
           price={this.state.products[i].price}
@@ -46,7 +46,7 @@ class ProductList extends React.Component {
     const productCards = this.createProductCards();
 
     return (
-      <div className="row">
+      <div className="row justify-content-center">
         {productCards}
       </div>
 

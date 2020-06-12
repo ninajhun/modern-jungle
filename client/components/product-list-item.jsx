@@ -5,8 +5,10 @@ class ProductListItem extends React.Component {
   render() {
     return (
 
-      <div className="card col-3 m-4">
-        <img src={this.props.image} className="card-img-top" alt="..."></img>
+      <div className="card col-3 m-2">
+
+        <img src={this.props.image} className="card-img-top contain" alt="..."></img>
+
         <div className="card-body">
           <h5 className="card-title">
             {this.props.name}
