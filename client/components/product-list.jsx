@@ -8,6 +8,7 @@ class ProductList extends React.Component {
       products: []
     };
     this.getProducts = this.getProducts.bind(this);
+    this.createProductCards = this.createProductCards.bind(this);
   }
 
   componentDidMount() {
@@ -24,9 +25,31 @@ class ProductList extends React.Component {
       });
   }
 
+  createProductCards() {
+    const productCards = [];
+    for (let i = 0; i < this.state.products.length; i++) {
+      productCards.push(
+        <ProductListItem image={this.state.products[i].image}
+          name={this.state.products[i].name}
+          price={this.state.products[i].productId}
+          description={this.state.products[i].shortDescription} />
+      );
+    }
+
+    return productCards;
+
+  }
+
   render() {
+
+    const productCards = this.createProductCards();
+
     return (
-      <ProductListItem /> // pass props from get request
+      <div>
+
+        { productCards }
+
+      </div>
     );
   }
 }

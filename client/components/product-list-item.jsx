@@ -6,16 +6,16 @@ class ProductListItem extends React.Component {
     return (
       <div>
         <div className="card col-3 m-3">
-          <img src="..." className="card-img-top" alt="..."></img>
+          <img src={this.props.image} className="card-img-top" alt="..."></img>
           <div className="card-body">
             <h5 className="card-title">
-              Product Title
+              {this.props.name}
             </h5>
             <h6 className="card-subtitle text-muted mb-2">
-              $00.00
+              {this.props.price}
             </h6>
             <p className = "card-text">
-                Product information
+              {this.props.description}
             </p>
 
           </div>
