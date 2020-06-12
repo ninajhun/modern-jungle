@@ -8,7 +8,7 @@ class ProductList extends React.Component {
       products: []
     };
     this.getProducts = this.getProducts.bind(this);
-    this.createProductCards = this.createProductCards.bind(this);
+    // this.createProductCards = this.createProductCards.bind(this);
   }
 
   componentDidMount() {
@@ -25,29 +25,15 @@ class ProductList extends React.Component {
       });
   }
 
-  createProductCards() {
-    const productCards = [];
-    for (let i = 0; i < this.state.products.length; i++) {
-      productCards.push(
-        <ProductListItem key={this.state.products[i].productId}
-          image={this.state.products[i].image}
-          name={this.state.products[i].name}
-          price={this.state.products[i].price}
-          description={this.state.products[i].shortDescription} />
-      );
-    }
-
-    return productCards;
-
-  }
-
   render() {
-
-    const productCards = this.createProductCards();
-
     return (
       <div className="row justify-content-center">
-        {productCards}
+        {
+          this.state.products.map(product => {
+            return <ProductListItem key={product.productId} product ={product} />;
+          })
+        }
+
       </div>
 
     );

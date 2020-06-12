@@ -3,21 +3,21 @@ import React from 'react';
 class ProductListItem extends React.Component {
 
   render() {
-    return (
 
+    return (
       <div className="card col-3 m-2">
 
-        <img src={this.props.image} className="card-img-top contain" alt="..."></img>
+        <img src={this.props.product.image} className="card-img-top contain" alt="..."></img>
 
         <div className="card-body">
           <h5 className="card-title">
-            {this.props.name}
+            {this.props.product.name}
           </h5>
           <h6 className="card-subtitle text-muted mb-2">
-            {this.props.price}
+           ${(this.props.product.price / 100).toFixed(2)}
           </h6>
           <p className = "card-text">
-            {this.props.description}
+            {this.props.product.shortDescription}
           </p>
 
         </div>
