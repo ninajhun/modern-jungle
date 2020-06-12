@@ -8,7 +8,6 @@ class ProductList extends React.Component {
       products: []
     };
     this.getProducts = this.getProducts.bind(this);
-    // this.createProductCards = this.createProductCards.bind(this);
   }
 
   componentDidMount() {
@@ -33,9 +32,7 @@ class ProductList extends React.Component {
             return <ProductListItem key={product.productId} product ={product} />;
           })
         }
-
       </div>
-
     );
   }
 }
