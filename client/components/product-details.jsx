@@ -36,11 +36,12 @@ class ProductDetails extends React.Component {
             <div className="row">
               <p> &lt; Back to catalog</p>
             </div>
+
             <div className="row">
               <div className="col-5">
-                <img src={this.state.product.image} className="card-img-top contain" alt="..."></img>
+                <img src={this.state.product.image} className="img mr-2" alt="..."></img>
               </div>
-              <div className="col7">
+              <div className="col-7">
                 <h5>
                   {this.state.product.name}
                 </h5>
@@ -49,6 +50,14 @@ class ProductDetails extends React.Component {
                 </h6>
                 <p>
                   {this.state.product.shortDescription}
+                </p>
+              </div>
+            </div>
+
+            <div className="row">
+              <div className="col">
+                <p>
+                  {this.state.product.longDescription}
                 </p>
               </div>
 
