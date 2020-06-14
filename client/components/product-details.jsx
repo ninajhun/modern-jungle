@@ -11,7 +11,7 @@ class ProductDetails extends React.Component {
   }
 
   getProduct() {
-    const id = this.props.id;
+    const id = this.props.params.productId;
 
     fetch(`/api/products/${id}`)
       .then(response => response.json())
