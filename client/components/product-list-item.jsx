@@ -7,7 +7,10 @@ class ProductListItem extends React.Component {
   }
 
   onClick() {
-    this.props.setView('details', this.props.product.productId);
+    const params = {
+      productId: this.props.product.productId
+    };
+    this.props.setView('details', params);
   }
 
   render() {
