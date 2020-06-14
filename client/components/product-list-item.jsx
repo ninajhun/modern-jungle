@@ -1,11 +1,18 @@
 import React from 'react';
 
 class ProductListItem extends React.Component {
+  constructor(props) {
+    super(props);
+    this.onClick = this.onClick.bind(this);
+  }
+
+  onClick() {
+    this.props.setView('details', this.props.product.productId);
+  }
 
   render() {
-
     return (
-      <div className="card col-3 m-2">
+      <div className="card col-3 m-2" onClick ={this.onClick}>
 
         <img src={this.props.product.image} className="card-img-top contain" alt="..."></img>
 

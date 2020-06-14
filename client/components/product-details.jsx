@@ -7,6 +7,7 @@ class ProductDetails extends React.Component {
       product: null
     };
     this.getProduct = this.getProduct.bind(this);
+
   }
 
   getProduct() {
