@@ -25,16 +25,16 @@ class ProductList extends React.Component {
   }
 
   render() {
+
     return (
       <div className="row justify-content-center">
         {
           this.state.products.map(product => {
-            return <ProductListItem key={product.productId} product ={product} />;
+            return <ProductListItem key={product.productId} product={product} setView={this.props.setView}/>;
           })
         }
       </div>
     );
   }
 }
-
 export default ProductList;

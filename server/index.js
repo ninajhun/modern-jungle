@@ -40,11 +40,7 @@ app.get('/api/products/:productId', (req, res, next) => {
 
   const productId = parseInt(req.params.productId);
   const sql = `
-   select  "p"."image",
-           "p"."name",
-           "p"."price",
-           "p"."productId",
-           "p"."shortDescription"
+   select  *
       from "products" as "p"
       where "productId" = $1;
     `;
