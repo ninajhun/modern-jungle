@@ -6,11 +6,9 @@ class ProductDetails extends React.Component {
     this.state = {
       product: null
     };
-    this.getProduct = this.getProduct.bind(this);
-
   }
 
-  getProduct() {
+  componentDidMount() {
     const id = this.props.params.productId;
 
     fetch(`/api/products/${id}`)
@@ -20,11 +18,11 @@ class ProductDetails extends React.Component {
           product: data
         });
       });
-
+    this.backToCatalog = this.backToCatalog.bind(this);
   }
 
-  componentDidMount() {
-    this.getProduct();
+  backToCatalog() {
+    this.props.setView('catalog', {});
   }
 
   render() {
@@ -35,7 +33,7 @@ class ProductDetails extends React.Component {
 
           <div className="container">
             <div className="row">
-              <p> &lt; Back to catalog</p>
+              <p className="text-muted" onClick = {this.backToCatalog}> &lt; Back to catalog</p>
             </div>
 
             <div className="row">
@@ -46,7 +44,7 @@ class ProductDetails extends React.Component {
                 <h5>
                   {this.state.product.name}
                 </h5>
-                <h6 className="text-muted mb-2">
+                <h6 className="t mb-2">
                   ${(this.state.product.price / 100).toFixed(2)}
                 </h6>
                 <p>

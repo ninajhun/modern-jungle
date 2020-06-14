@@ -25,7 +25,6 @@ export default class App extends React.Component {
   }
 
   render() {
-
     if (this.state.view.name === 'catalog') {
       return (
         <div className="container-fluid">
@@ -43,7 +42,6 @@ export default class App extends React.Component {
         </div>
       );
     }
-
   }
 
 }
