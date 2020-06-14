@@ -7,8 +7,10 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      message: null,
-      isLoading: true
+      view: {
+        name: 'catalog',
+        params: {}
+      }
     };
   }
 
@@ -17,7 +19,7 @@ export default class App extends React.Component {
       <div className="container-fluid">
         <Header />
         {/* <ProductList />  */}
-        <ProductDetails id = {1} />
+        <ProductDetails id = {4} />
       </div>
 
     );
