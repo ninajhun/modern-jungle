@@ -6,6 +6,7 @@ class ProductDetails extends React.Component {
     this.state = {
       product: null
     };
+    this.backToCatalog = this.backToCatalog.bind(this);
   }
 
   componentDidMount() {
@@ -18,7 +19,7 @@ class ProductDetails extends React.Component {
           product: data
         });
       });
-    this.backToCatalog = this.backToCatalog.bind(this);
+
   }
 
   backToCatalog() {
