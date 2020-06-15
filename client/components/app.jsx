@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './header';
 import ProductList from './product-list';
 import ProductDetails from './product-details';
+import CartSummaryItem from './cart-summary-item';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -69,7 +70,8 @@ export default class App extends React.Component {
       return (
         <div className="container-fluid">
           <Header cartItemCount={this.state.cart.length} />
-          <ProductList setView={this.setView} />
+          {/* <ProductList setView={this.setView} /> */}
+          <CartSummaryItem item={this.state.cart[1]} />
         </div>
       );
     }
