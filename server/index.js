@@ -54,17 +54,29 @@ app.get('/api/products/:productId', (req, res, next) => {
 });
 
 app.get('/api/cart', (req, res, next) => {
-  const sql = `
-  select *
-    from "carts";
-  `;
 
-  db.query(sql)
-    .then(result => res.status(200).json(result.rows))
-    .catch(err => next(err));
+  if (!req.session.cartId) {
+    return res.status(200).json([]);
+  } else {
+    const sql = `
+          select "c"."cartItemId",
+            "c"."price",
+            "p"."productId",
+            "p"."image",
+            "p"."name",
+            "p"."shortDescription"
+        from "cartItems" as "c"
+        join "products" as "p" using ("productId")
+      where "c"."cartId" = $1
+      `;
+    const cartId = req.session.cartId;
+
+    db.query(sql, [cartId])
+      .then(result => res.status(200).json(result.rows))
+      .catch(err => next(err));
+  }
 });
 
-/// //
 app.post('/api/cart', (req, res, next) => {
   const productId = parseInt(req.body.productId);
   const sql = `
@@ -76,9 +88,7 @@ app.post('/api/cart', (req, res, next) => {
   const id = [productId];
 
   if (isNaN(productId) || productId <= 0) {
-    return res.status(400).json({
-      error: 'productId must be a positive integer'
-    });
+    return next(new ClientError('productId must be a positive integer', 400));
   }
 
   db.query(sql, id)
@@ -150,14 +160,10 @@ app.post('/api/cart', (req, res, next) => {
           return res.status(201).json(cartItem);
         });
 
-    }
-
-    )
+    })
     .catch(err => next(err));
 
 });
-
-/// //
 
 app.use('/api', (req, res, next) => {
   next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));
