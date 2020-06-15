@@ -13,15 +13,22 @@ export default class App extends React.Component {
       }
     };
     this.setView = this.setView.bind(this);
+
   }
 
   setView(name, params) {
     this.setState({
       view: {
         name: name,
-        params: params
+        params: params,
+        cart: []
       }
     });
+  }
+
+  getCartItems() {
+    fetch('/api/cart')
+      .then(result => console.log(result));
   }
 
   render() {
