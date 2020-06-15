@@ -9,9 +9,9 @@ export default class App extends React.Component {
     this.state = {
       view: {
         name: 'catalog',
-        params: {},
-        cart: []
-      }
+        params: {}
+      },
+      cart: []
     };
     this.setView = this.setView.bind(this);
     this.getCartItems = this.getCartItems.bind(this);
@@ -23,12 +23,21 @@ export default class App extends React.Component {
     this.getCartItems();
   }
 
+  getCartItems() {
+    fetch('/api/cart')
+      .then(result => result.json())
+      .then(data => {
+        this.setState({
+          cart: data
+        });
+      });
+  }
+
   setView(name, params) {
     this.setState({
       view: {
         name: name,
-        params: params,
-        cart: this.state.view.cart
+        params: params
       }
     });
 
@@ -45,14 +54,8 @@ export default class App extends React.Component {
     })
       .then(response => response.json())
       .then(data => {
-        this.state.view.cart.push(data);
-
         this.setState({
-          view: {
-            name: this.state.view.name,
-            params: this.state.view.params,
-            cart: this.state.view.cart
-          }
+          cart: this.state.cart.concat(data)
         });
       })
       .catch(err => {
@@ -61,25 +64,11 @@ export default class App extends React.Component {
 
   }
 
-  getCartItems() {
-    fetch('/api/cart')
-      .then(result => result.json())
-      .then(data => {
-        this.setState({
-          view: {
-            name: this.state.view.name,
-            params: this.state.view.params,
-            cart: data
-          }
-        });
-      });
-  }
-
   render() {
     if (this.state.view.name === 'catalog') {
       return (
         <div className="container-fluid">
-          <Header cartItemCount={this.state.view.cart.length} />
+          <Header cartItemCount={this.state.cart.length} />
           <ProductList setView={this.setView} />
         </div>
       );
@@ -88,7 +77,7 @@ export default class App extends React.Component {
     if (this.state.view.name === 'details') {
       return (
         <div className="container-fluid">
-          <Header cartItemCount = {this.state.view.cart.length}/>
+          <Header cartItemCount = {this.state.cart.length}/>
           <ProductDetails params = {this.state.view.params} setView = {this.setView} addToCart = {this.addToCart}/>
         </div>
       );
