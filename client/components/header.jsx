@@ -10,6 +10,10 @@ class Header extends React.Component {
     this.props.setView('cart', {});
   }
 
+  backToCatalog() {
+    this.props.setView('catalog', {});
+  }
+
   render() {
     let items;
     this.props.cartItemCount === '1'

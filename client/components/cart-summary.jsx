@@ -2,8 +2,19 @@ import React from 'react';
 import CartSummaryItem from './cart-summary-item';
 
 class CartSummary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.backToCatalog = this.backToCatalog.bind(this);
+
+  }
+
+  backToCatalog() {
+    this.props.setView('catalog', {});
+  }
 
   render() {
+
+    const totalPrice = this.props.cart.reduce((accumulator, current) => accumulator + (current.price / 100), 0);
 
     if (!this.props.cart.length) {
       return (
@@ -14,9 +25,14 @@ class CartSummary extends React.Component {
     }
 
     return (
-      <div className="row justify-content-center">
+      <div >
+        <div className="row ml-5">
+          <p className="text-muted" onClick={this.backToCatalog}> &lt; Back to catalog</p>
+        </div>
 
-        <h2>My Cart</h2>
+        <div className="row">
+          <h2 className='ml-5'>My Cart</h2>
+        </div>
 
         <div className="row justify-content-center">
           {
@@ -24,6 +40,12 @@ class CartSummary extends React.Component {
               return <CartSummaryItem key={cartItem.cartItemId} item={cartItem} />;
             })
           }
+        </div>
+
+        <div className="row">
+          <h5 className='ml-5'>
+            Item Total: ${totalPrice}
+          </h5>
         </div>
       </div>
     );

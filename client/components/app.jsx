@@ -90,7 +90,7 @@ export default class App extends React.Component {
       return (
         <div className="container-fluid">
           <Header cartItemCount={this.state.cart.length} setView = {this.setView} />
-          <CartSummary cart ={this.state.cart} />
+          <CartSummary cart={this.state.cart} setView={this.setView} />
         </div>
       );
     }
