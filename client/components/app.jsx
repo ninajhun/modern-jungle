@@ -15,6 +15,7 @@ export default class App extends React.Component {
     };
     this.setView = this.setView.bind(this);
     this.getCartItems = this.getCartItems.bind(this);
+    this.addToCart = this.addToCart.bind(this);
 
   }
 
@@ -34,6 +35,7 @@ export default class App extends React.Component {
   }
 
   addToCart(product) {
+    console.log('hi');
     fetch('api/cart', {
       method: 'POST',
       headers: {
@@ -86,7 +88,7 @@ export default class App extends React.Component {
       return (
         <div className="container-fluid">
           <Header cartItemCount = {this.state.view.cart.length}/>
-          <ProductDetails params = {this.state.view.params} setView = {this.setView}/>
+          <ProductDetails params = {this.state.view.params} setView = {this.setView} addToCart = {this.addToCart}/>
         </div>
       );
     }
