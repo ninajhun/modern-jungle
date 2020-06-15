@@ -35,7 +35,7 @@ export default class App extends React.Component {
   }
 
   addToCart(product) {
-    console.log('hi');
+
     fetch('api/cart', {
       method: 'POST',
       headers: {
@@ -45,12 +45,13 @@ export default class App extends React.Component {
     })
       .then(response => response.json())
       .then(data => {
-        console.log(data);
+        this.state.view.cart.push(data);
+
         this.setState({
           view: {
             name: this.state.view.name,
             params: this.state.view.params,
-            cart: this.state.view.cart.push(data)
+            cart: this.state.view.cart
           }
         });
       })
