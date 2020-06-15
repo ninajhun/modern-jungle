@@ -2,14 +2,14 @@ import React from 'react';
 import Header from './header';
 import ProductList from './product-list';
 import ProductDetails from './product-details';
-import CartSummaryItem from './cart-summary-item';
+import CartSummary from './cart-summary';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       view: {
-        name: 'catalog',
+        name: 'cart', // change back to catalog after passing event listener to cart button
         params: {}
       },
       cart: []
@@ -66,12 +66,13 @@ export default class App extends React.Component {
   }
 
   render() {
+
     if (this.state.view.name === 'catalog') {
+
       return (
         <div className="container-fluid">
           <Header cartItemCount={this.state.cart.length} />
-          {/* <ProductList setView={this.setView} /> */}
-          <CartSummaryItem item={this.state.cart[1]} />
+          <ProductList setView={this.setView} />
         </div>
       );
     }
@@ -84,6 +85,16 @@ export default class App extends React.Component {
         </div>
       );
     }
+
+    if (this.state.view.name === 'cart') {
+      return (
+        <div className="container-fluid">
+          <Header cartItemCount={this.state.cart.length} />
+          <CartSummary cart ={this.state.cart} />
+        </div>
+      );
+    }
+
   }
 
 }
