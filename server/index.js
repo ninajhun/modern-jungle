@@ -99,7 +99,9 @@ app.post('/api/cart', (req, res, next) => {
       }
 
       if (req.session.cartId) {
+
         return (
+
           {
             cartId: req.session.cartId,
             productId: result.rows[0].productId,
