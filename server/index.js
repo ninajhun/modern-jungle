@@ -14,11 +14,11 @@ app.use(sessionMiddleware);
 
 app.use(express.json());
 
-app.get('/api/health-check', (req, res, next) => {
-  db.query('select \'successfully connected\' as "message"')
-    .then(result => res.json(result.rows[0]))
-    .catch(err => next(err));
-});
+// app.get('/api/health-check', (req, res, next) => {
+//   db.query('select \'successfully connected\' as "message"')
+//     .then(result => res.json(result.rows[0]))
+//     .catch(err => next(err));
+// });
 
 app.get('/api/products', (req, res, next) => {
   const sql = `
@@ -57,6 +57,17 @@ app.get('/api/products/:productId', (req, res, next) => {
     })
     .catch(err => next(err));
 
+});
+
+app.get('/api/cart', (req, res, next) => {
+  const sql = `
+  select *
+    from "carts";
+  `;
+
+  db.query(sql)
+    .then(result => res.status(200).json(result.rows))
+    .catch(err => next(err));
 });
 
 app.use('/api', (req, res, next) => {
