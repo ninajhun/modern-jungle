@@ -68,7 +68,8 @@ app.get('/api/cart', (req, res, next) => {
 app.post('/api/cart', (req, res, next) => {
   const productId = parseInt(req.body.productId);
   const sql = `
-    select "price"
+    select "price",
+           "productId"
       from "products"
       where "productId" = $1;
   `;
@@ -83,9 +84,7 @@ app.post('/api/cart', (req, res, next) => {
   db.query(sql, id)
     .then(result => {
       if (!result.rows[0]) {
-        return res.status(400).json({
-          error: `cannot find product with productId ${productId}`
-        });
+        throw new ClientError(`cannot find product with productId ${productId}`, 400);
       }
 
       const sql = `
@@ -99,16 +98,29 @@ app.post('/api/cart', (req, res, next) => {
           return (
             {
               cartId: newResult.rows[0].cartId,
+              productId: result.rows[0].productId,
               price: result.rows[0].price
             }
           );
         });
 
     })
+    .then(result => {
+      req.session.cartId = result.cartId;
+
+      const params = [req.session.cartId, result.productId, result.price];
+      const sql = `
+      insert into "cartItems" ("cartId", "productId", "price")
+          values ($1, $2, $3)
+          returning "cartItemId";
+      `;
+
+      return db.query(sql, params)
+        .then(newResult => newResult.rows[0]);
+
+    })
     .then(result =>
-      console.log(result)
-    )
-    .then()
+      console.log(result))
     .catch(err => next(err));
 
 });
