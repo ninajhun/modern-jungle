@@ -9,7 +9,7 @@ class CartSummaryItem extends React.Component {
     }
 
     return (
-      <div className="card m-1">
+      <div className="card m-1 w-75">
         <div className="row align-items-center">
 
           <div className="col">

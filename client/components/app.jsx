@@ -9,7 +9,7 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       view: {
-        name: 'cart', // change back to catalog after passing event listener to cart button
+        name: 'catalog', // change back to catalog after passing event listener to cart button
         params: {}
       },
       cart: []
@@ -71,7 +71,7 @@ export default class App extends React.Component {
 
       return (
         <div className="container-fluid">
-          <Header cartItemCount={this.state.cart.length} />
+          <Header cartItemCount={this.state.cart.length} setView = {this.setView} />
           <ProductList setView={this.setView} />
         </div>
       );
@@ -80,7 +80,7 @@ export default class App extends React.Component {
     if (this.state.view.name === 'details') {
       return (
         <div className="container-fluid">
-          <Header cartItemCount = {this.state.cart.length}/>
+          <Header cartItemCount = {this.state.cart.length} setView = {this.setView}/>
           <ProductDetails params = {this.state.view.params} setView = {this.setView} addToCart = {this.addToCart}/>
         </div>
       );
@@ -89,7 +89,7 @@ export default class App extends React.Component {
     if (this.state.view.name === 'cart') {
       return (
         <div className="container-fluid">
-          <Header cartItemCount={this.state.cart.length} />
+          <Header cartItemCount={this.state.cart.length} setView = {this.setView} />
           <CartSummary cart ={this.state.cart} />
         </div>
       );
