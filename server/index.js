@@ -83,27 +83,37 @@ app.post('/api/cart', (req, res, next) => {
 
   db.query(sql, id)
     .then(result => {
+
       if (!result.rows[0]) {
         throw new ClientError(`cannot find product with productId ${productId}`, 400);
       }
 
-      const sql = `
-      insert into "carts"("cartId", "createdAt")
-          values(default, default)
-          returning "cartId";
-        `;
+      if (req.session.cartId) {
+        return (
+          {
+            cartId: req.session.cartId,
+            productId: result.rows[0].productId,
+            price: result.rows[0].price
+          }
+        );
+      } else {
+        const sql = `
+           insert into "carts"("cartId", "createdAt")
+              values(default, default)
+              returning "cartId";
+             `;
 
-      return db.query(sql)
-        .then(newResult => {
-          return (
-            {
-              cartId: newResult.rows[0].cartId,
-              productId: result.rows[0].productId,
-              price: result.rows[0].price
-            }
-          );
-        });
-
+        return db.query(sql)
+          .then(newResult => {
+            return (
+              {
+                cartId: newResult.rows[0].cartId,
+                productId: result.rows[0].productId,
+                price: result.rows[0].price
+              }
+            );
+          });
+      }
     })
     .then(result => {
       req.session.cartId = result.cartId;
