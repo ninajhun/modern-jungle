@@ -9,10 +9,12 @@ export default class App extends React.Component {
     this.state = {
       view: {
         name: 'catalog',
-        params: {}
+        params: {},
+        cart: []
       }
     };
     this.setView = this.setView.bind(this);
+    this.getCartItems = this.getCartItems.bind(this);
 
   }
 
@@ -21,14 +23,29 @@ export default class App extends React.Component {
       view: {
         name: name,
         params: params,
-        cart: []
+        cart: this.state.view.cart
       }
     });
+
+  }
+
+  componentDidMount() {
+    this.getCartItems();
   }
 
   getCartItems() {
     fetch('/api/cart')
-      .then(result => console.log(result));
+      .then(result => result.json())
+      .then(data => {
+        // console.log(data);
+        this.setState({
+          view: {
+            name: this.state.view.name,
+            params: this.state.view.params,
+            cart: data
+          }
+        });
+      });
   }
 
   render() {
