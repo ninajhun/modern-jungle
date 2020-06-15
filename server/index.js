@@ -14,12 +14,6 @@ app.use(sessionMiddleware);
 
 app.use(express.json());
 
-// app.get('/api/health-check', (req, res, next) => {
-//   db.query('select \'successfully connected\' as "message"')
-//     .then(result => res.json(result.rows[0]))
-//     .catch(err => next(err));
-// });
-
 app.get('/api/products', (req, res, next) => {
   const sql = `
     select "p"."image",
@@ -70,9 +64,15 @@ app.get('/api/cart', (req, res, next) => {
     .catch(err => next(err));
 });
 
+/// //
 app.post('/api/cart', (req, res, next) => {
-
   const productId = req.body.productId;
+  const sql = `
+    select "price"
+      from "products"
+      where "productId" = $1;
+  `;
+  const id = [productId];
 
   if (isNaN(productId) || productId <= 0) {
     return res.status(400).json({
@@ -80,7 +80,15 @@ app.post('/api/cart', (req, res, next) => {
     });
   }
 
+  db.query(sql, id)
+    .then()
+    .then()
+    .then()
+    .catch(err => next(err));
+
 });
+
+/// //
 
 app.use('/api', (req, res, next) => {
   next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));
