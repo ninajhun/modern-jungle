@@ -52,7 +52,7 @@ export default class App extends React.Component {
     if (this.state.view.name === 'catalog') {
       return (
         <div className="container-fluid">
-          <Header />
+          <Header cartItemCount={this.state.view.cart.length} />
           <ProductList setView={this.setView} />
         </div>
       );
@@ -61,7 +61,7 @@ export default class App extends React.Component {
     if (this.state.view.name === 'details') {
       return (
         <div className="container-fluid">
-          <Header />
+          <Header cartItemCount = {this.state.view.cart.length}/>
           <ProductDetails params = {this.state.view.params} setView = {this.setView}/>
         </div>
       );

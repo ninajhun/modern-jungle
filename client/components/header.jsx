@@ -3,9 +3,21 @@ import React from 'react';
 class Header extends React.Component {
 
   render() {
+    let items;
+    this.props.cartItemCount === '1'
+      ? items = 'Item'
+      : items = 'Items';
+
     return (
-      <div className="row bg-dark py-1 mb-4">
-        <h4 className="text-white ml-5"><i className="fas fa-dollar-sign"></i> Wicked Sales</h4>
+      <div className="row bg-dark py-2  align-items-center">
+        <div className="col-10 ">
+          <h4 className="text-white ml-5"><i className="fas fa-dollar-sign"></i> Wicked Sales</h4>
+        </div>
+
+        <div className="col-2">
+          <h6 className='text-white'>{this.props.cartItemCount} {items} <i className="fas fa-shopping-cart"></i></h6>
+        </div>
+
       </div>
     );
   }
