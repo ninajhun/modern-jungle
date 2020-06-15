@@ -9,7 +9,7 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       view: {
-        name: 'catalog', // change back to catalog after passing event listener to cart button
+        name: 'catalog',
         params: {}
       },
       cart: []
@@ -67,33 +67,18 @@ export default class App extends React.Component {
 
   render() {
 
-    if (this.state.view.name === 'catalog') {
+    const body = this.state.view.name === 'catalog'
+      ? <ProductList setView={this.setView} />
+      : this.state.view.name === 'cart'
+        ? <CartSummary cart={this.state.cart} setView={this.setView} />
+        : <ProductDetails params={this.state.view.params} setView={this.setView} addToCart={this.addToCart} />;
 
-      return (
-        <div className="container-fluid">
-          <Header cartItemCount={this.state.cart.length} setView = {this.setView} />
-          <ProductList setView={this.setView} />
-        </div>
-      );
-    }
-
-    if (this.state.view.name === 'details') {
-      return (
-        <div className="container-fluid">
-          <Header cartItemCount = {this.state.cart.length} setView = {this.setView}/>
-          <ProductDetails params = {this.state.view.params} setView = {this.setView} addToCart = {this.addToCart}/>
-        </div>
-      );
-    }
-
-    if (this.state.view.name === 'cart') {
-      return (
-        <div className="container-fluid">
-          <Header cartItemCount={this.state.cart.length} setView = {this.setView} />
-          <CartSummary cart={this.state.cart} setView={this.setView} />
-        </div>
-      );
-    }
+    return (
+      <div className="container-fluid">
+        <Header cartItemCount={this.state.cart.length} setView = {this.setView} />
+        {body}
+      </div>
+    );
 
   }
 
