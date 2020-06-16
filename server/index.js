@@ -167,6 +167,30 @@ app.post('/api/cart', (req, res, next) => {
 
 });
 
+/// ///////
+app.post('/api/orders', (req, res, next) => {
+  if (!req.session.cartId) {
+    return next(new ClientError('no current cart session', 400));
+  }
+
+  if (req.body.name && req.body.creditCard && req.body.shippingAddress) {
+    const sql = `
+      insert into "orders" ("cartId", "name", "creditCard", "shippingAddress")
+        values ($1, $2, $3, $4)
+        returning * ;
+    `;
+
+    const values = [req.session.cartId, req.body.name, req.body.creditCard, req.body.shippingAddress];
+
+    db.query(sql, values)
+      .then(result => {
+        return res.status(201).json(result.rows[0]);
+      });
+
+  }
+
+});
+/// ////////////
 app.use('/api', (req, res, next) => {
   next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));
 });
