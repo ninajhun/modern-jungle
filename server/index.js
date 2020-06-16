@@ -99,9 +99,7 @@ app.post('/api/cart', (req, res, next) => {
       }
 
       if (req.session.cartId) {
-
         return (
-
           {
             cartId: req.session.cartId,
             productId: result.rows[0].productId,
@@ -167,7 +165,6 @@ app.post('/api/cart', (req, res, next) => {
 
 });
 
-/// ///////
 app.post('/api/orders', (req, res, next) => {
   if (!req.session.cartId) {
     return next(new ClientError('no current cart session', 400));
@@ -177,20 +174,27 @@ app.post('/api/orders', (req, res, next) => {
     const sql = `
       insert into "orders" ("cartId", "name", "creditCard", "shippingAddress")
         values ($1, $2, $3, $4)
-        returning * ;
+        returning "createdAt",
+                  "creditCard",
+                  "name",
+                  "orderId",
+                  "shippingAddress";
     `;
 
     const values = [req.session.cartId, req.body.name, req.body.creditCard, req.body.shippingAddress];
 
     db.query(sql, values)
       .then(result => {
+        if (result.rows[0]) {
+          delete req.session.cartId;
+        }
         return res.status(201).json(result.rows[0]);
       });
 
   }
 
 });
-/// ////////////
+
 app.use('/api', (req, res, next) => {
   next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));
 });
