@@ -170,6 +170,10 @@ app.post('/api/orders', (req, res, next) => {
     return next(new ClientError('no current cart session', 400));
   }
 
+  if (!req.body.name || !req.body.creditCard || !req.body.shippingAddress) {
+    return next(new ClientError('name, creditCard, and shippingAddress must be provided', 400));
+  }
+
   if (req.body.name && req.body.creditCard && req.body.shippingAddress) {
     const sql = `
       insert into "orders" ("cartId", "name", "creditCard", "shippingAddress")
@@ -179,16 +183,15 @@ app.post('/api/orders', (req, res, next) => {
                   "name",
                   "orderId",
                   "shippingAddress";
+
     `;
 
     const values = [req.session.cartId, req.body.name, req.body.creditCard, req.body.shippingAddress];
 
     db.query(sql, values)
       .then(result => {
-        if (result.rows[0]) {
-          delete req.session.cartId;
-        }
-        return res.status(201).json(result.rows[0]);
+        res.status(201).json(result.rows[0]);
+        delete req.session.cartId;
       });
 
   }
