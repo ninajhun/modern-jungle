@@ -17,6 +17,7 @@ export default class App extends React.Component {
     this.setView = this.setView.bind(this);
     this.getCartItems = this.getCartItems.bind(this);
     this.addToCart = this.addToCart.bind(this);
+    this.placeOrder = this.placeOrder.bind(this);
 
   }
 
@@ -63,6 +64,25 @@ export default class App extends React.Component {
         console.error(err);
       });
 
+  }
+
+  placeOrder(cart) {
+    fetch('api/orders', {
+      method: 'POST',
+      header: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(cart)
+    })
+      .then(response => response.json())
+      .then(data => {
+        this.setState({
+          view: {
+            name: 'catalog',
+            params: {}
+          }
+        });
+      });
   }
 
   render() {
