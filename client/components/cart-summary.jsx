@@ -19,6 +19,7 @@ class CartSummary extends React.Component {
     if (!this.props.cart.length) {
       return (
         <div>
+          <p className="text-muted" onClick={this.backToCatalog}> &lt; Back to catalog</p>
           <p>No items in cart.</p>
         </div>
       );
