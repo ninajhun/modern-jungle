@@ -8,6 +8,13 @@ class CheckoutForm extends React.Component {
       creditCard: '',
       address: ''
     };
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
   }
 
   render() {
@@ -17,17 +24,17 @@ class CheckoutForm extends React.Component {
 
           <div className="form-group">
             <label>Name</label>
-            <input type='text' className="form-control" value={this.state.value} onChange ={this.handleChange} />
+            <input type='text' name="name" className="form-control" value={this.state.value} onChange ={this.handleChange} />
           </div>
 
           <div className="form-group">
             <label>Credit Card</label>
-            <input type='text' className="form-control" value={this.state.value} onChange={this.handleChange} />
+            <input type='text' name="creditCard" className="form-control" value={this.state.value} onChange={this.handleChange} />
           </div>
 
           <div className="form-group">
             <label>Address</label>
-            <textarea className="form-control" value={this.state.value} onChange={this.handleChange}></textarea>
+            <textarea name="address" className="form-control" value={this.state.value} onChange={this.handleChange}></textarea>
           </div>
 
         </form>
