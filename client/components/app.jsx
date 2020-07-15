@@ -3,6 +3,7 @@ import Header from './header';
 import ProductList from './product-list';
 import ProductDetails from './product-details';
 import CartSummary from './cart-summary';
+import CheckoutFrom from './checkout-form';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -86,12 +87,24 @@ export default class App extends React.Component {
   }
 
   render() {
+    let body;
+    switch (this.state.view.name) {
+      case 'catalog':
+        body = <ProductList setView={this.setView} />;
+        break;
 
-    const body = this.state.view.name === 'catalog'
-      ? <ProductList setView={this.setView} />
-      : this.state.view.name === 'cart'
-        ? <CartSummary cart={this.state.cart} setView={this.setView} />
-        : <ProductDetails params={this.state.view.params} setView={this.setView} addToCart={this.addToCart} />;
+      case 'cart':
+        body = <CartSummary cart={this.state.cart} setView={this.setView} />;
+        break;
+
+      case 'details':
+        body = <ProductDetails params={this.state.view.params} setView={this.setView} addToCart={this.addToCart} />;
+        break;
+
+      case 'checkout':
+        body = <CheckoutFrom />;
+        break;
+    }
 
     return (
       <div className="container-fluid">
