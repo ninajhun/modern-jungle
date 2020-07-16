@@ -6,9 +6,10 @@ class CheckoutForm extends React.Component {
     this.state = {
       name: '',
       creditCard: '',
-      address: ''
+      shippingAddress: ''
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
@@ -17,24 +18,44 @@ class CheckoutForm extends React.Component {
     });
   }
 
+  handleSubmit(event) {
+
+    event.preventDefault();
+    const formData = new FormData(event.target);
+
+    fetch('/api/orders', {
+      method: 'POST',
+      body: formData
+    })
+      .then(res => res.json())
+      .then(data => console.log(data))
+      .catch(err => console.error(err));
+
+  }
+
   render() {
     return (
       <div className="row">
-        <form className="col-12" onSubmit ={this.handleSubmit}>
+
+        <form className="col-12" encType="multipart/form-data" onSubmit ={this.handleSubmit}>
 
           <div className="form-group">
             <label>Name</label>
-            <input type='text' name="name" className="form-control" value={this.state.value} onChange ={this.handleChange} />
+            <input type='text' name="name" className="form-control" value={this.state.name} onChange ={this.handleChange} />
           </div>
 
           <div className="form-group">
             <label>Credit Card</label>
-            <input type='text' name="creditCard" className="form-control" value={this.state.value} onChange={this.handleChange} />
+            <input type='text' name="creditCard" className="form-control" value={this.state.creditCard} onChange={this.handleChange} />
           </div>
 
           <div className="form-group">
             <label>Address</label>
-            <textarea name="address" className="form-control" value={this.state.value} onChange={this.handleChange}></textarea>
+            <textarea name="shippingAddress" className="form-control" value={this.state.shippingAddress} onChange={this.handleChange}></textarea>
+          </div>
+
+          <div>
+            <button type="submit" className='btn btn-light'>Purchase</button>
           </div>
 
         </form>

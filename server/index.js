@@ -7,6 +7,8 @@ const ClientError = require('./client-error');
 const staticMiddleware = require('./static-middleware');
 const sessionMiddleware = require('./session-middleware');
 
+// const formData = require('express-form-data');//
+
 const app = express();
 
 app.use(staticMiddleware);
@@ -166,6 +168,12 @@ app.post('/api/cart', (req, res, next) => {
 });
 
 app.post('/api/orders', (req, res, next) => {
+
+  console.log(req.body);
+  console.log(req.body.name);
+  console.log(req.body.creditCard);
+  console.log(req.body.shippingAddress);
+
   if (!req.session.cartId) {
     return next(new ClientError('no current cart session', 400));
   }
@@ -213,6 +221,8 @@ app.use((err, req, res, next) => {
     });
   }
 });
+
+// app.use(formData.union()); //
 
 app.listen(process.env.PORT, () => {
   // eslint-disable-next-line no-console
