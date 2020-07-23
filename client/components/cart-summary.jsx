@@ -19,13 +19,14 @@ class CartSummary extends React.Component {
     if (!this.props.cart.length) {
       return (
         <div>
+          <p className="text-muted" onClick={this.backToCatalog}> &lt; Back to catalog</p>
           <p>No items in cart.</p>
         </div>
       );
     }
 
     return (
-      <div >
+      <div>
         <div className="row ml-5">
           <p className="text-muted" onClick={this.backToCatalog}> &lt; Back to catalog</p>
         </div>
@@ -43,9 +44,15 @@ class CartSummary extends React.Component {
         </div>
 
         <div className="row">
-          <h5 className='ml-5'>
-            Item Total: ${totalPrice}
-          </h5>
+          <div className="col-8">
+            <h5 className='ml-5'>
+              Item Total: ${totalPrice}
+            </h5>
+          </div>
+          <div className="col-4">
+            <button className="btn btn-primary" onClick={() => this.props.setView('checkout', {})}>Checkout</button>
+          </div>
+
         </div>
       </div>
     );

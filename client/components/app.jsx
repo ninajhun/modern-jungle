@@ -3,6 +3,7 @@ import Header from './header';
 import ProductList from './product-list';
 import ProductDetails from './product-details';
 import CartSummary from './cart-summary';
+import CheckoutForm from './checkout-form';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -17,6 +18,7 @@ export default class App extends React.Component {
     this.setView = this.setView.bind(this);
     this.getCartItems = this.getCartItems.bind(this);
     this.addToCart = this.addToCart.bind(this);
+    this.placeOrder = this.placeOrder.bind(this);
 
   }
 
@@ -65,13 +67,46 @@ export default class App extends React.Component {
 
   }
 
-  render() {
+  placeOrder(order) {
+    fetch('/api/orders', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(order)
+    })
+      .then(response => response.json())
+      .then(data => {
+        this.setState({
+          view: {
+            name: 'catalog',
+            params: {}
+          },
+          cart: []
+        });
+      })
+      .catch(err => console.error(err));
+  }
 
-    const body = this.state.view.name === 'catalog'
-      ? <ProductList setView={this.setView} />
-      : this.state.view.name === 'cart'
-        ? <CartSummary cart={this.state.cart} setView={this.setView} />
-        : <ProductDetails params={this.state.view.params} setView={this.setView} addToCart={this.addToCart} />;
+  render() {
+    let body;
+    switch (this.state.view.name) {
+      case 'catalog':
+        body = <ProductList setView={this.setView} />;
+        break;
+
+      case 'cart':
+        body = <CartSummary cart={this.state.cart} setView={this.setView} />;
+        break;
+
+      case 'details':
+        body = <ProductDetails params={this.state.view.params} setView={this.setView} addToCart={this.addToCart} />;
+        break;
+
+      case 'checkout':
+        body = <CheckoutForm setView={this.setView} placeOrder={this.placeOrder}/>;
+        break;
+    }
 
     return (
       <div className="container-fluid">

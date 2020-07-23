@@ -23,8 +23,9 @@ class Header extends React.Component {
     return (
       <div className="row bg-dark py-2  align-items-center">
         <div className="col-10 ">
-          <h4 className="text-white ml-5">
-            <i className="fas fa-dollar-sign"></i> Wicked Sales
+          <h4 className="text-white ml-5" onClick={() => this.props.setView('catalog', {})}>
+            <i className="fas fa-dollar-sign"></i>
+            Wicked Sales
           </h4>
         </div>
 

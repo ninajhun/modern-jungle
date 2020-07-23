@@ -1,7 +1,6 @@
 
 require('dotenv/config');
 const express = require('express');
-
 const db = require('./database');
 const ClientError = require('./client-error');
 const staticMiddleware = require('./static-middleware');
@@ -213,6 +212,8 @@ app.use((err, req, res, next) => {
     });
   }
 });
+
+// app.use(formData.union()); //
 
 app.listen(process.env.PORT, () => {
   // eslint-disable-next-line no-console
