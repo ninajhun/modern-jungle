@@ -26,7 +26,7 @@ class CartSummary extends React.Component {
     }
 
     return (
-      <div >
+      <div>
         <div className="row ml-5">
           <p className="text-muted" onClick={this.backToCatalog}> &lt; Back to catalog</p>
         </div>
@@ -44,9 +44,15 @@ class CartSummary extends React.Component {
         </div>
 
         <div className="row">
-          <h5 className='ml-5'>
-            Item Total: ${totalPrice}
-          </h5>
+          <div className="col">
+            <h5 className='ml-5'>
+              Item Total: ${totalPrice}
+            </h5>
+          </div>
+          <div className="col">
+            <button className="btn btn-primary" onClick={() => this.props.setView('checkout', {})}>Checkout</button>
+          </div>
+
         </div>
       </div>
     );
