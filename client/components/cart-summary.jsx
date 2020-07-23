@@ -44,12 +44,12 @@ class CartSummary extends React.Component {
         </div>
 
         <div className="row">
-          <div className="col">
+          <div className="col-8">
             <h5 className='ml-5'>
               Item Total: ${totalPrice}
             </h5>
           </div>
-          <div className="col">
+          <div className="col-4">
             <button className="btn btn-primary" onClick={() => this.props.setView('checkout', {})}>Checkout</button>
           </div>
 
