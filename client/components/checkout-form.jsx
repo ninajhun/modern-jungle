@@ -19,13 +19,19 @@ class CheckoutForm extends React.Component {
   }
 
   handleSubmit(event) {
-
     event.preventDefault();
-    const formData = new FormData(event.target);
+    const body = {
+      name: this.state.name,
+      creditCard: this.state.creditCard,
+      shippingAddress: this.state.shippingAddress
+    };
 
     fetch('/api/orders', {
       method: 'POST',
-      body: formData
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body)
     })
       .then(res => res.json())
       .then(data => console.log(data))

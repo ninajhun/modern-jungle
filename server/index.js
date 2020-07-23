@@ -1,13 +1,10 @@
 
 require('dotenv/config');
 const express = require('express');
-
 const db = require('./database');
 const ClientError = require('./client-error');
 const staticMiddleware = require('./static-middleware');
 const sessionMiddleware = require('./session-middleware');
-
-// const formData = require('express-form-data');//
 
 const app = express();
 
@@ -168,12 +165,6 @@ app.post('/api/cart', (req, res, next) => {
 });
 
 app.post('/api/orders', (req, res, next) => {
-
-  console.log(req.body);
-  console.log(req.body.name);
-  console.log(req.body.creditCard);
-  console.log(req.body.shippingAddress);
-
   if (!req.session.cartId) {
     return next(new ClientError('no current cart session', 400));
   }
