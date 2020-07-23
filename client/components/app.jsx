@@ -3,7 +3,7 @@ import Header from './header';
 import ProductList from './product-list';
 import ProductDetails from './product-details';
 import CartSummary from './cart-summary';
-import CheckoutFrom from './checkout-form';
+import CheckoutForm from './checkout-form';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -67,13 +67,13 @@ export default class App extends React.Component {
 
   }
 
-  placeOrder(cart) {
-    fetch('api/orders', {
+  placeOrder(order) {
+    fetch('/api/orders', {
       method: 'POST',
-      header: {
+      headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(cart)
+      body: JSON.stringify(order)
     })
       .then(response => response.json())
       .then(data => {
@@ -81,9 +81,11 @@ export default class App extends React.Component {
           view: {
             name: 'catalog',
             params: {}
-          }
+          },
+          cart: []
         });
-      });
+      })
+      .catch(err => console.error(err));
   }
 
   render() {
@@ -102,7 +104,7 @@ export default class App extends React.Component {
         break;
 
       case 'checkout':
-        body = <CheckoutFrom />;
+        body = <CheckoutForm setView={this.setView} placeOrder={this.placeOrder}/>;
         break;
     }
 
