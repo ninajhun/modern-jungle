@@ -21,15 +21,15 @@ class Header extends React.Component {
       : items = 'Items';
 
     return (
-      <div className="row bg-dark py-2  align-items-center">
+      <div className="row py-2  align-items-center header">
         <div className="col-10 ">
-          <h4 className="text-white ml-5" onClick={() => this.props.setView('catalog', {})}>
+          <h4 className="ml-5" onClick={() => this.props.setView('catalog', {})}>
            Urban Jungle
           </h4>
         </div>
 
         <div className="col-2">
-          <h6 className='text-white' onClick = {this.openCart}>{this.props.cartItemCount} {items} <i className="fas fa-shopping-cart"></i></h6>
+          <h6 onClick={this.openCart}> {this.props.cartItemCount} {items} <i className="fas fa-shopping-cart"></i></h6>
         </div>
 
       </div>

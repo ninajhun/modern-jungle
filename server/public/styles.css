@@ -8,6 +8,13 @@ h4 {
   font-family: 'Antic Slab', serif;
 }
 
+
+.header {
+  background-color: #C8FFAE;
+
+}
+
+
 .contain {
   height: 200px;
   object-fit: contain;
