@@ -266,6 +266,14 @@ COPY public."cartItems" ("cartItemId", "cartId", "productId", price) FROM stdin;
 38	25	2	2595
 39	25	4	999
 40	26	4	999
+41	27	4	999
+42	28	3	2900
+43	28	2	2595
+44	28	4	999
+45	29	3	2900
+46	29	2	2595
+47	30	1	2999
+48	31	3	2900
 \.
 
 
@@ -295,6 +303,11 @@ COPY public.carts ("cartId", "createdAt") FROM stdin;
 24	2020-06-15 22:45:25.601914+00
 25	2020-06-16 00:48:21.449402+00
 26	2020-06-16 00:50:22.114004+00
+27	2020-06-16 01:05:05.342719+00
+28	2020-06-20 21:52:20.972458+00
+29	2020-07-15 20:32:55.111224+00
+30	2020-07-23 18:06:11.473013+00
+31	2020-08-06 02:23:25.787153+00
 \.
 
 
@@ -308,6 +321,12 @@ COPY public.orders ("orderId", "cartId", name, "creditCard", "shippingAddress", 
 3	21	Nina Jhun	123456789	123 LearningFuze	2020-06-16 00:47:21.527263+00
 4	25	Nina Jhun	123456789	123 LearningFuze	2020-06-16 00:48:31.096415+00
 5	26	Nina Jhun	123456789	123 LearningFuze	2020-06-16 00:50:24.190647+00
+6	30	ninajhun	1234567890	123 Apple Ln	2020-07-23 18:06:38.590364+00
+7	30	ninajhun	1234567890	123 Apple Ln	2020-07-23 18:06:46.715732+00
+8	30	ninajhun	1234567890	123	2020-07-23 18:13:20.494629+00
+9	30	ninajhun	1234567890	1vfcvkndck,a	2020-07-23 18:28:49.499183+00
+10	30	ninajhun	1234567890	1234c	2020-07-23 18:29:37.152104+00
+11	30	ninajhun	12ww1	efefe	2020-07-23 18:44:19.31971+00
 \.
 
 
@@ -316,12 +335,12 @@ COPY public.orders ("orderId", "cartId", name, "creditCard", "shippingAddress", 
 --
 
 COPY public.products ("productId", name, price, image, "shortDescription", "longDescription") FROM stdin;
-1	Shake Weight	2999	/images/shake-weight.jpg	Dynamic Inertia technology ignites muscles in arms, shoulders, and chest.	Lorem ipsum dolor amet fashion axe pour-over jianbing, adaptogen waistcoat tacos master cleanse pitchfork next level. Thundercats pour-over chartreuse 90's. Master cleanse hot chicken ennui offal. Freegan slow-carb offal hell of. Umami polaroid wolf slow-carb next level. Gentrify cardigan seitan, kombucha tacos chambray roof party typewriter man braid. Tote bag lo-fi hell of chia fam hammock\\n.Aesthetic photo booth la croix, vaporware leggings biodiesel man braid tumeric skateboard tousled slow-carb four dollar toast synth pabst pickled. Typewriter church-key chia slow-carb vice gochujang actually. Shoreditch austin woke hot chicken, single-origin coffee ugh affogato four loko green juice. Migas iPhone four dollar toast mustache.
-2	ShamWow	2595	/images/shamwow.jpg	It's like a chamois, towel, and sponge, all in one! Soaks up to 10x it's weight in any liquid!	Lorem ipsum dolor amet fashion axe pour-over jianbing, adaptogen waistcoat tacos master cleanse pitchfork next level. Thundercats pour-over chartreuse 90's. Master cleanse hot chicken ennui offal. Freegan slow-carb offal hell of. Umami polaroid wolf slow-carb next level. Gentrify cardigan seitan, kombucha tacos chambray roof party typewriter man braid. Tote bag lo-fi hell of chia fam hammock\\n.Aesthetic photo booth la croix, vaporware leggings biodiesel man braid tumeric skateboard tousled slow-carb four dollar toast synth pabst pickled. Typewriter church-key chia slow-carb vice gochujang actually. Shoreditch austin woke hot chicken, single-origin coffee ugh affogato four loko green juice. Migas iPhone four dollar toast mustache.
-3	Snuggie	2900	/images/snuggie.jpg	Super-Soft Fleece with pockets! One Size fits all Adults! Keeps you Warm & Your Hands-Free!	Lorem ipsum dolor amet fashion axe pour-over jianbing, adaptogen waistcoat tacos master cleanse pitchfork next level. Thundercats pour-over chartreuse 90's. Master cleanse hot chicken ennui offal. Freegan slow-carb offal hell of. Umami polaroid wolf slow-carb next level. Gentrify cardigan seitan, kombucha tacos chambray roof party typewriter man braid. Tote bag lo-fi hell of chia fam hammock\\n.Aesthetic photo booth la croix, vaporware leggings biodiesel man braid tumeric skateboard tousled slow-carb four dollar toast synth pabst pickled. Typewriter church-key chia slow-carb vice gochujang actually. Shoreditch austin woke hot chicken, single-origin coffee ugh affogato four loko green juice. Migas iPhone four dollar toast mustache.
-4	Wax Vac	999	/images/wax-vac.jpg	Gentle way to remove ear wax. Safe and hygienic. Reduces the risk of painful infections.	Lorem ipsum dolor amet fashion axe pour-over jianbing, adaptogen waistcoat tacos master cleanse pitchfork next level. Thundercats pour-over chartreuse 90's. Master cleanse hot chicken ennui offal. Freegan slow-carb offal hell of. Umami polaroid wolf slow-carb next level. Gentrify cardigan seitan, kombucha tacos chambray roof party typewriter man braid. Tote bag lo-fi hell of chia fam hammock\\n.Aesthetic photo booth la croix, vaporware leggings biodiesel man braid tumeric skateboard tousled slow-carb four dollar toast synth pabst pickled. Typewriter church-key chia slow-carb vice gochujang actually. Shoreditch austin woke hot chicken, single-origin coffee ugh affogato four loko green juice. Migas iPhone four dollar toast mustache.
-5	Ostrich Pillow	9900	/images/ostrich-pillow.jpg	Create your own snugly space in the world and feel-good anywhere with the ultimate cocoon pillow.	Lorem ipsum dolor amet fashion axe pour-over jianbing, adaptogen waistcoat tacos master cleanse pitchfork next level. Thundercats pour-over chartreuse 90's. Master cleanse hot chicken ennui offal. Freegan slow-carb offal hell of. Umami polaroid wolf slow-carb next level. Gentrify cardigan seitan, kombucha tacos chambray roof party typewriter man braid. Tote bag lo-fi hell of chia fam hammock\\n.Aesthetic photo booth la croix, vaporware leggings biodiesel man braid tumeric skateboard tousled slow-carb four dollar toast synth pabst pickled. Typewriter church-key chia slow-carb vice gochujang actually. Shoreditch austin woke hot chicken, single-origin coffee ugh affogato four loko green juice. Migas iPhone four dollar toast mustache.
-6	Tater Mitts	830	/images/tater-mitts.jpg	8 Seconds is all you need with Tater Mitts. Quickly and easily prepare all your favorite potato dishes with Tater Mitts.	Lorem ipsum dolor amet fashion axe pour-over jianbing, adaptogen waistcoat tacos master cleanse pitchfork next level. Thundercats pour-over chartreuse 90's. Master cleanse hot chicken ennui offal. Freegan slow-carb offal hell of. Umami polaroid wolf slow-carb next level. Gentrify cardigan seitan, kombucha tacos chambray roof party typewriter man braid. Tote bag lo-fi hell of chia fam hammock\\n.Aesthetic photo booth la croix, vaporware leggings biodiesel man braid tumeric skateboard tousled slow-carb four dollar toast synth pabst pickled. Typewriter church-key chia slow-carb vice gochujang actually. Shoreditch austin woke hot chicken, single-origin coffee ugh affogato four loko green juice. Migas iPhone four dollar toast mustache.
+11	English Ivy	2000	/images/english-ivy.jpg	This creeping vine will look great hanging from a shelf or a hook! They love part shade to full shade, so they can grow in most house environments!	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque et eros augue. Curabitur fermentum hendrerit metus vitae lacinia. Maecenas pharetra lorem sem, non rutrum purus tempor eget. Donec fringilla a ante et pellentesque. Donec vulputate mauris tortor. Curabitur eget aliquam turpis, sed vestibulum justo. Vivamus a cursus turpis. Cras massa est, molestie eu risus et, maximus pharetra ante. Cras blandit vulputate est, a finibus dolor venenatis id.Sed viverra sapien enim, id fermentum urna tincidunt sit amet. Phasellus quis ornare elit, quis vehicula elit. Sed a nisl ultricies, fermentum nisl eget, vestibulum lectus. Maecenas non urna bibendum, blandit purus nec, dictum ipsum. Curabitur hendrerit maximus massa, eget fermentum risus porta id. Phasellus placerat massa in posuere sagittis. Aliquam euismod ultrices tincidunt.
+14	Aloe Vera	1500	/images/aloevera.jpg	Treat yourself to a plant that is not only aesthetically pleasing, but also a lifesaver in a pinch when you get sunburned during those hot summer months!	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque et eros augue. Curabitur fermentum hendrerit metus vitae lacinia. Maecenas pharetra lorem sem, non rutrum purus tempor eget. Donec fringilla a ante et pellentesque. Donec vulputate mauris tortor. Curabitur eget aliquam turpis, sed vestibulum justo. Vivamus a cursus turpis. Cras massa est, molestie eu risus et, maximus pharetra ante. Cras blandit vulputate est, a finibus dolor venenatis id.Sed viverra sapien enim, id fermentum urna tincidunt sit amet. Phasellus quis ornare elit, quis vehicula elit. Sed a nisl ultricies, fermentum nisl eget, vestibulum lectus. Maecenas non urna bibendum, blandit purus nec, dictum ipsum. Curabitur hendrerit maximus massa, eget fermentum risus porta id. Phasellus placerat massa in posuere sagittis. Aliquam euismod ultrices tincidunt.
+19	Split Leaf Philodendron	3000	/images/split-leaf.jpg	The plant everyone seems to want these days: the Split Leaf Philodendron! If you want to make sure your plant grow those oh so gorgeous splits, make sure you give your plant lots of sun in the summer!	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque et eros augue. Curabitur fermentum hendrerit metus vitae lacinia. Maecenas pharetra lorem sem, non rutrum purus tempor eget. Donec fringilla a ante et pellentesque. Donec vulputate mauris tortor. Curabitur eget aliquam turpis, sed vestibulum justo. Vivamus a cursus turpis. Cras massa est, molestie eu risus et, maximus pharetra ante. Cras blandit vulputate est, a finibus dolor venenatis id.Sed viverra sapien enim, id fermentum urna tincidunt sit amet. Phasellus quis ornare elit, quis vehicula elit. Sed a nisl ultricies, fermentum nisl eget, vestibulum lectus. Maecenas non urna bibendum, blandit purus nec, dictum ipsum. Curabitur hendrerit maximus massa, eget fermentum risus porta id. Phasellus placerat massa in posuere sagittis. Aliquam euismod ultrices tincidunt.
+18	Areca Palm 	3500	/images/areca-palm.jpg	 Bring a little bit of your vacation back home with you and let this palm remind you of sunnier days relaxing by the beach.	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque et eros augue. Curabitur fermentum hendrerit metus vitae lacinia. Maecenas pharetra lorem sem, non rutrum purus tempor eget. Donec fringilla a ante et pellentesque. Donec vulputate mauris tortor. Curabitur eget aliquam turpis, sed vestibulum justo. Vivamus a cursus turpis. Cras massa est, molestie eu risus et, maximus pharetra ante. Cras blandit vulputate est, a finibus dolor venenatis id.Sed viverra sapien enim, id fermentum urna tincidunt sit amet. Phasellus quis ornare elit, quis vehicula elit. Sed a nisl ultricies, fermentum nisl eget, vestibulum lectus. Maecenas non urna bibendum, blandit purus nec, dictum ipsum. Curabitur hendrerit maximus massa, eget fermentum risus porta id. Phasellus placerat massa in posuere sagittis. Aliquam euismod ultrices tincidunt.
+20	Snake Plant	2500	/images/snake-plant.jpg	No need to be afraid of this snake! Also called mother-in-law’s tongue, this plant is sure to slither into your heart.	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque et eros augue. Curabitur fermentum hendrerit metus vitae lacinia. Maecenas pharetra lorem sem, non rutrum purus tempor eget. Donec fringilla a ante et pellentesque. Donec vulputate mauris tortor. Curabitur eget aliquam turpis, sed vestibulum justo. Vivamus a cursus turpis. Cras massa est, molestie eu risus et, maximus pharetra ante. Cras blandit vulputate est, a finibus dolor venenatis id.Sed viverra sapien enim, id fermentum urna tincidunt sit amet. Phasellus quis ornare elit, quis vehicula elit. Sed a nisl ultricies, fermentum nisl eget, vestibulum lectus. Maecenas non urna bibendum, blandit purus nec, dictum ipsum. Curabitur hendrerit maximus massa, eget fermentum risus porta id. Phasellus placerat massa in posuere sagittis. Aliquam euismod ultrices tincidunt.
+21	Golden Pothos	2000	/images/pothos.jpg	 Golden Pothos or Devil’s Ivy is another great plant to hang from a shelf or hook! They love to grow, grow, grow! So, make sure you’re ready to have this plant turn your house into the jungle of your dreams!	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque et eros augue. Curabitur fermentum hendrerit metus vitae lacinia. Maecenas pharetra lorem sem, non rutrum purus tempor eget. Donec fringilla a ante et pellentesque. Donec vulputate mauris tortor. Curabitur eget aliquam turpis, sed vestibulum justo. Vivamus a cursus turpis. Cras massa est, molestie eu risus et, maximus pharetra ante. Cras blandit vulputate est, a finibus dolor venenatis id.Sed viverra sapien enim, id fermentum urna tincidunt sit amet. Phasellus quis ornare elit, quis vehicula elit. Sed a nisl ultricies, fermentum nisl eget, vestibulum lectus. Maecenas non urna bibendum, blandit purus nec, dictum ipsum. Curabitur hendrerit maximus massa, eget fermentum risus porta id. Phasellus placerat massa in posuere sagittis. Aliquam euismod ultrices tincidunt.
 \.
 
 
@@ -329,28 +348,28 @@ COPY public.products ("productId", name, price, image, "shortDescription", "long
 -- Name: cartItems_cartItemId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public."cartItems_cartItemId_seq"', 40, true);
+SELECT pg_catalog.setval('public."cartItems_cartItemId_seq"', 48, true);
 
 
 --
 -- Name: carts_cartId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public."carts_cartId_seq"', 26, true);
+SELECT pg_catalog.setval('public."carts_cartId_seq"', 31, true);
 
 
 --
 -- Name: orders_orderId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public."orders_orderId_seq"', 5, true);
+SELECT pg_catalog.setval('public."orders_orderId_seq"', 11, true);
 
 
 --
 -- Name: products_productId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public."products_productId_seq"', 1, false);
+SELECT pg_catalog.setval('public."products_productId_seq"', 21, true);
 
 
 --
