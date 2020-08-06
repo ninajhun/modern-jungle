@@ -2,12 +2,12 @@ import React from 'react';
 
 function LandingPage(props) {
   return (
-    <div>
-      <p className="welcome-text">welcome to </p>
-      <p className="title-text">Urban Jungle</p>
-      <p className="title-description">This website is for demonstration purposes only. </p>
-      <p>No real purchases will be made. </p>
-      <p className="enter-button">ENTER</p>
+    <div >
+      <p className="welcome-text text-center">welcome to </p>
+      <p className="title-text text-center"><span className="highlight">Urban</span> Jungle</p>
+      <p className="title-description text-center">This website is for demonstration purposes only. </p>
+      <p className="title-description text-center"> No real purchases will be made. </p>
+      <p className="enter-button text-center"><span className="highlight">ENTER</span></p>
     </div>
   );
 }
