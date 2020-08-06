@@ -1,3 +1,13 @@
+* {
+   font-family: 'Recursive', sans-serif;
+  /* font-family: 'Montserrat', sans-serif; */
+
+}
+
+h4 {
+  font-family: 'Antic Slab', serif;
+}
+
 .contain {
   height: 200px;
   object-fit: contain;
