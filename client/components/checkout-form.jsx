@@ -61,7 +61,7 @@ class CheckoutForm extends React.Component {
           </div>
         </div>
 
-        <div className="row d-flex justify-content-center mt-3">
+        <div className="row d-flex justify-content-center mt-3 mb-5 ">
 
           <form className="col-9" encType="multipart/form-data" onSubmit ={this.handleSubmit}>
             <div className="form-group">
@@ -84,7 +84,7 @@ class CheckoutForm extends React.Component {
               <p>I verify that I did not use my real personal information and credit card. This application is purely for demonstration purposes only.</p>
 
               <div>
-                <button type="submit" className='btn btn-light'>Place Order</button>
+                <button type="submit" className='btn btn-secondary'>Place Order</button>
               </div>
 
             </div>
