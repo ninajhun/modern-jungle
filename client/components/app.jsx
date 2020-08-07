@@ -11,11 +11,11 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       view: {
-        name: 'catalog',
+        name: 'checkout',
         params: {}
       },
       cart: [],
-      isModalOpen: true
+      isModalOpen: false
     };
     this.setView = this.setView.bind(this);
     this.getCartItems = this.getCartItems.bind(this);
@@ -125,7 +125,7 @@ export default class App extends React.Component {
         break;
 
       case 'checkout':
-        body = <CheckoutForm setView={this.setView} placeOrder={this.placeOrder}/>;
+        body = <CheckoutForm setView={this.setView} placeOrder={this.placeOrder} cart={this.state.cart}/>;
         break;
     }
 

@@ -21,10 +21,10 @@ class Header extends React.Component {
     return (
       <div className="row header py-2 align-items-center">
         <div className="col-10 ">
-          <h5 className="ml-5" onClick={() => this.props.setView('catalog', {})}>
+          <h4 className="ml-5 antic-slab" onClick={() => this.props.setView('catalog', {})}>
             <i className="fab fa-pagelines"></i>
             Urban Jungle
-          </h5>
+          </h4>
         </div>
 
         <div className="col-2">

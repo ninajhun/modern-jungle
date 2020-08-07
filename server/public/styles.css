@@ -7,9 +7,13 @@
   padding: 4px;
 }
 
-h5 {
-  font-family: 'Antic Slab', serif;
+.antic-slab {
+    font-family: 'Antic Slab', serif;
 }
+
+/* h4 {
+  font-family: 'Antic Slab', serif;
+} */
 
 p.welcome-text{
   font-size: 2rem;

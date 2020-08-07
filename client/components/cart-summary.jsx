@@ -27,7 +27,7 @@ class CartSummary extends React.Component {
 
     return (
       <div>
-        <div className="row ml-5">
+        <div className="row ml-5 mt-3">
           <p className="text-muted" onClick={this.backToCatalog}> &lt; Back to catalog</p>
         </div>
 
