@@ -109,7 +109,7 @@ export default class App extends React.Component {
         break;
 
       case 'landing':
-        body = <LandingPage />;
+        body = <LandingPage setView={this.setView} />;
         break;
     }
 
