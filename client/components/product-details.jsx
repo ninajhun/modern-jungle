@@ -34,7 +34,7 @@ class ProductDetails extends React.Component {
 
           <div className="container">
             <div className="row">
-              <p className="text-muted mt-3" onClick = {this.backToCatalog}> &lt; Back to catalog</p>
+              <p className="text-muted mt-3" onClick = {this.backToCatalog}> &lt; Back to Catalog</p>
             </div>
 
             <div className="row">
@@ -58,7 +58,7 @@ class ProductDetails extends React.Component {
             </div>
 
             <div className="row">
-              <div className="col">
+              <div className="col mt-2">
                 <p>
                   {this.state.product.longDescription}
                 </p>

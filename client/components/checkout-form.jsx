@@ -6,16 +6,31 @@ class CheckoutForm extends React.Component {
     this.state = {
       name: '',
       creditCard: '',
-      shippingAddress: ''
+      shippingAddress: '',
+      disclaimer: false
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
-    this.setState({
-      [event.target.name]: event.target.value
-    });
+
+    if (event.target.name === 'disclaimer') {
+      if (!this.state.disclaimer) {
+        this.setState({
+          disclaimer: true
+        });
+      } else {
+        this.setState({
+          disclaimer: false
+        });
+      }
+    } else {
+      this.setState({
+        [event.target.name]: event.target.value
+      });
+    }
+
   }
 
   handleSubmit(event) {
@@ -32,31 +47,50 @@ class CheckoutForm extends React.Component {
   }
 
   render() {
+    const totalPrice = this.props.cart.reduce((accumulator, current) => accumulator + (current.price / 100), 0);
     return (
-      <div className="row">
+      <div>
+        <div className="row ml-5 mt-3">
+          <p className="text-muted" onClick={() => this.props.setView('cart', {})}> &lt; Back to Cart </p>
+        </div>
 
-        <form className="col-12" encType="multipart/form-data" onSubmit ={this.handleSubmit}>
-
-          <div className="form-group">
-            <label>Name</label>
-            <input type='text' name="name" className="form-control" value={this.state.name} onChange ={this.handleChange} />
+        <div className="row mt-3 d-flex justify-content-center">
+          <div className="col-9">
+            <h1 className='antic-slab'>Checkout</h1>
+            <h4>Order Total: ${totalPrice}  </h4>
           </div>
+        </div>
 
-          <div className="form-group">
-            <label>Credit Card</label>
-            <input type='text' name="creditCard" className="form-control" value={this.state.creditCard} onChange={this.handleChange} />
-          </div>
+        <div className="row d-flex justify-content-center mt-3 mb-5 ">
 
-          <div className="form-group">
-            <label>Address</label>
-            <textarea name="shippingAddress" className="form-control" value={this.state.shippingAddress} onChange={this.handleChange}></textarea>
-          </div>
+          <form className="col-9" encType="multipart/form-data" onSubmit ={this.handleSubmit}>
+            <div className="form-group">
+              <label>Name</label>
+              <input type='text' name="name" className="form-control" value={this.state.name} onChange ={this.handleChange} />
+            </div>
 
-          <div>
-            <button type="submit" className='btn btn-light'>Purchase</button>
-          </div>
+            <div className="form-group">
+              <label>Credit Card</label>
+              <input type='text' name="creditCard" className="form-control" value={this.state.creditCard} onChange={this.handleChange} />
+            </div>
 
-        </form>
+            <div className="form-group">
+              <label>Address</label>
+              <textarea name="shippingAddress" className="form-control" value={this.state.shippingAddress} onChange={this.handleChange}></textarea>
+            </div>
+
+            <div className="form-check">
+              <input type="checkbox" name="disclaimer" className="form-check-input" value={this.state.disclaimer} onChange={this.handleChange} />
+              <p>I verify that I did not use my real personal information and credit card number. This application is purely for demonstration purposes only and no real purchases will be made.</p>
+
+              <div>
+                <button type="submit" className='btn btn-secondary'>Place Order</button>
+              </div>
+
+            </div>
+          </form>
+
+        </div>
 
       </div>
 

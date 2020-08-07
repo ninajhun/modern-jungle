@@ -19,7 +19,7 @@ class CartSummary extends React.Component {
     if (!this.props.cart.length) {
       return (
         <div>
-          <p className="text-muted" onClick={this.backToCatalog}> &lt; Back to catalog</p>
+          <p className="text-muted" onClick={this.backToCatalog}> &lt; Back to Catalog</p>
           <p>No items in cart.</p>
         </div>
       );
@@ -27,12 +27,14 @@ class CartSummary extends React.Component {
 
     return (
       <div>
-        <div className="row ml-5">
-          <p className="text-muted" onClick={this.backToCatalog}> &lt; Back to catalog</p>
+        <div className="row ml-5 mt-3">
+          <p className="text-muted" onClick={this.backToCatalog}> &lt; Back to Catalog</p>
         </div>
 
-        <div className="row">
-          <h2 className='ml-5'>My Cart</h2>
+        <div className="row d-flex justify-content-center mt-3">
+          <div className="col-9">
+            <h1 className='antic-slab'>My Cart</h1>
+          </div>
         </div>
 
         <div className="row justify-content-center">
@@ -43,14 +45,14 @@ class CartSummary extends React.Component {
           }
         </div>
 
-        <div className="row">
-          <div className="col-8">
+        <div className="row mt-3 mb-3">
+          <div className="col-6 d-flex justify-content-center">
             <h5 className='ml-5'>
               Item Total: ${totalPrice}
             </h5>
           </div>
-          <div className="col-4">
-            <button className="btn btn-light" onClick={() => this.props.setView('checkout', {})}>Checkout</button>
+          <div className="col-6 d-flex justify-content-center">
+            <button className="btn btn-secondary " onClick={() => this.props.setView('checkout', {})}>Checkout</button>
           </div>
 
         </div>
