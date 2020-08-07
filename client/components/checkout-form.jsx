@@ -51,12 +51,12 @@ class CheckoutForm extends React.Component {
     return (
       <div>
         <div className="row ml-5 mt-3">
-          <p className="text-muted" onClick={this.backToCatalog}> &lt; Back to catalog</p>
+          <p className="text-muted" onClick={() => this.props.setView('catalog', {})}> &lt; Back to catalog</p>
         </div>
 
         <div className="row mt-3 d-flex justify-content-center">
           <div className="col-9">
-            <h1 className='antic-slab'>My Cart</h1>
+            <h1 className='antic-slab'>Checkout</h1>
             <h4>Order Total: ${totalPrice}  </h4>
           </div>
         </div>
@@ -84,7 +84,7 @@ class CheckoutForm extends React.Component {
               <p>I verify that I did not use my real personal information and credit card. This application is purely for demonstration purposes only.</p>
 
               <div>
-                <button type="submit" className='btn btn-light'>Purchase</button>
+                <button type="submit" className='btn btn-light'>Place Order</button>
               </div>
 
             </div>
