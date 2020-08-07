@@ -4,6 +4,7 @@
 
 .highlight {
   background-color: #C8FFAE;;
+  padding: 4px;
 }
 
 h5 {
@@ -27,7 +28,16 @@ p.title-description {
   font-size: .75rem;
 }
 
+p.enter-button > span:hover{
+  color: white;
+  background-color: #85a875 ;
 
+}
+
+.landing-modal {
+  position: fixed;
+  z-index: 1000;
+}
 
 .header {
   background-color: #C8FFAE;

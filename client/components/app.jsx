@@ -11,16 +11,17 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       view: {
-        name: 'landing', // change back
+        name: 'catalog',
         params: {}
       },
-      cart: []
+      cart: [],
+      isModalOpen: true
     };
     this.setView = this.setView.bind(this);
     this.getCartItems = this.getCartItems.bind(this);
     this.addToCart = this.addToCart.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
-
+    this.handleModal = this.handleModal.bind(this);
   }
 
   componentDidMount() {
@@ -89,7 +90,26 @@ export default class App extends React.Component {
       .catch(err => console.error(err));
   }
 
+  handleModal() {
+    if (!this.state.isModalOpen) {
+      this.setState({
+        isModalOpen: true
+      });
+    } else {
+      this.setState({
+        isModalOpen: false
+      });
+    }
+  }
+
   render() {
+    let modal;
+    if (!this.state.isModalOpen) {
+      modal = false;
+    } else {
+      modal = <LandingPage setView={this.setView} handleModal={this.handleModal} />;
+    }
+
     let body;
     switch (this.state.view.name) {
       case 'catalog':
@@ -109,15 +129,23 @@ export default class App extends React.Component {
         break;
 
       case 'landing':
-        body = <LandingPage setView={this.setView} />;
+        body = <LandingPage setView={this.setView} handleModal={this.handleModal} />;
         break;
     }
 
     return (
-      <div className="container-fluid">
-        <Header cartItemCount={this.state.cart.length} setView = {this.setView} />
-        {body}
+      <div>
+        <div>
+          {modal}
+        </div>
+
+        <div className="container-fluid">
+          <Header cartItemCount={this.state.cart.length} setView={this.setView} />
+          {body}
+        </div>
+
       </div>
+
     );
 
   }
