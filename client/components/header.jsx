@@ -16,16 +16,15 @@ class Header extends React.Component {
 
   render() {
     let items;
-    this.props.cartItemCount === '1'
-      ? items = 'Item'
-      : items = 'Items';
+    this.props.cartItemCount === 1 ? items = 'Item' : items = 'Items';
 
     return (
       <div className="row header py-2 align-items-center">
         <div className="col-10 ">
-          <h4 className="ml-5" onClick={() => this.props.setView('catalog', {})}>
+          <h5 className="ml-5" onClick={() => this.props.setView('catalog', {})}>
+            <i className="fab fa-pagelines"></i>
             Urban Jungle
-          </h4>
+          </h5>
         </div>
 
         <div className="col-2">

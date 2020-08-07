@@ -4,6 +4,7 @@ import ProductList from './product-list';
 import ProductDetails from './product-details';
 import CartSummary from './cart-summary';
 import CheckoutForm from './checkout-form';
+import LandingPage from './landing-page';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -13,13 +14,14 @@ export default class App extends React.Component {
         name: 'catalog',
         params: {}
       },
-      cart: []
+      cart: [],
+      isModalOpen: true
     };
     this.setView = this.setView.bind(this);
     this.getCartItems = this.getCartItems.bind(this);
     this.addToCart = this.addToCart.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
-
+    this.handleModal = this.handleModal.bind(this);
   }
 
   componentDidMount() {
@@ -88,7 +90,26 @@ export default class App extends React.Component {
       .catch(err => console.error(err));
   }
 
+  handleModal() {
+    if (!this.state.isModalOpen) {
+      this.setState({
+        isModalOpen: true
+      });
+    } else {
+      this.setState({
+        isModalOpen: false
+      });
+    }
+  }
+
   render() {
+    let modal;
+    if (!this.state.isModalOpen) {
+      modal = null;
+    } else {
+      modal = <LandingPage setView={this.setView} handleModal={this.handleModal} />;
+    }
+
     let body;
     switch (this.state.view.name) {
       case 'catalog':
@@ -109,9 +130,15 @@ export default class App extends React.Component {
     }
 
     return (
-      <div className="container-fluid">
-        <Header cartItemCount={this.state.cart.length} setView = {this.setView} />
-        {body}
+      <div>
+
+        {modal}
+
+        <div className="container-fluid">
+          <Header cartItemCount={this.state.cart.length} setView={this.setView} />
+          {body}
+        </div>
+
       </div>
     );
 

@@ -50,7 +50,7 @@ class CartSummary extends React.Component {
             </h5>
           </div>
           <div className="col-4">
-            <button className="btn btn-primary" onClick={() => this.props.setView('checkout', {})}>Checkout</button>
+            <button className="btn btn-light" onClick={() => this.props.setView('checkout', {})}>Checkout</button>
           </div>
 
         </div>
