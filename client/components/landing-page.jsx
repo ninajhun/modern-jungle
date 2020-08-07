@@ -3,7 +3,7 @@ import React from 'react';
 function LandingPage(props) {
   return (
     <div>
-      {/* <div className="modal-overlay"></div> */}
+      <div className="modal-overlay"></div>
 
       <div className="card landing-modal justify-content-center">
         <div className="card-body">
