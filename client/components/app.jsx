@@ -105,7 +105,7 @@ export default class App extends React.Component {
   render() {
     let modal;
     if (!this.state.isModalOpen) {
-      modal = false;
+      modal = null;
     } else {
       modal = <LandingPage setView={this.setView} handleModal={this.handleModal} />;
     }
@@ -128,16 +128,16 @@ export default class App extends React.Component {
         body = <CheckoutForm setView={this.setView} placeOrder={this.placeOrder}/>;
         break;
 
-      case 'landing':
-        body = <LandingPage setView={this.setView} handleModal={this.handleModal} />;
-        break;
+      // case 'landing':
+      //   body = <LandingPage setView={this.setView} handleModal={this.handleModal} />;
+      //   break;
     }
 
     return (
       <div>
-        <div>
-          {modal}
-        </div>
+        {/* <div> */}
+        {modal}
+        {/* </div> */}
 
         <div className="container-fluid">
           <Header cartItemCount={this.state.cart.length} setView={this.setView} />
