@@ -6,16 +6,31 @@ class CheckoutForm extends React.Component {
     this.state = {
       name: '',
       creditCard: '',
-      shippingAddress: ''
+      shippingAddress: '',
+      disclaimer: false
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
-    this.setState({
-      [event.target.name]: event.target.value
-    });
+
+    if (event.target.name === 'disclaimer') {
+      if (!this.state.disclaimer) {
+        this.setState({
+          disclaimer: true
+        });
+      } else {
+        this.setState({
+          disclaimer: false
+        });
+      }
+    } else {
+      this.setState({
+        [event.target.name]: event.target.value
+      });
+    }
+
   }
 
   handleSubmit(event) {
@@ -64,8 +79,14 @@ class CheckoutForm extends React.Component {
               <textarea name="shippingAddress" className="form-control" value={this.state.shippingAddress} onChange={this.handleChange}></textarea>
             </div>
 
-            <div>
-              <button type="submit" className='btn btn-light'>Purchase</button>
+            <div className="form-check">
+              <input type="checkbox" name="disclaimer" className="form-check-input" value={this.state.disclaimer} onChange={this.handleChange} />
+              <p>I verify that I did not use my real personal information and credit card. This application is purely for demonstration purposes only.</p>
+
+              <div>
+                <button type="submit" className='btn btn-light'>Purchase</button>
+              </div>
+
             </div>
           </form>
 
