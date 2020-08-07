@@ -49,7 +49,7 @@ p.enter-button > span:hover{
   z-index: 1000;
   top: 20%;
   padding: 50px;
-  width: 100%;
+  width: 50%;
 }
 
 .header {

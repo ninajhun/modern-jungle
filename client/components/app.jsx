@@ -127,17 +127,12 @@ export default class App extends React.Component {
       case 'checkout':
         body = <CheckoutForm setView={this.setView} placeOrder={this.placeOrder}/>;
         break;
-
-      // case 'landing':
-      //   body = <LandingPage setView={this.setView} handleModal={this.handleModal} />;
-      //   break;
     }
 
     return (
       <div>
-        {/* <div> */}
+
         {modal}
-        {/* </div> */}
 
         <div className="container-fluid">
           <Header cartItemCount={this.state.cart.length} setView={this.setView} />
@@ -145,7 +140,6 @@ export default class App extends React.Component {
         </div>
 
       </div>
-
     );
 
   }
