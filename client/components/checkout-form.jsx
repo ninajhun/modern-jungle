@@ -51,7 +51,7 @@ class CheckoutForm extends React.Component {
     return (
       <div>
         <div className="row ml-5 mt-3">
-          <p className="text-muted" onClick={() => this.props.setView('catalog', {})}> &lt; Back to catalog</p>
+          <p className="text-muted" onClick={() => this.props.setView('cart', {})}> &lt; Back to Cart </p>
         </div>
 
         <div className="row mt-3 d-flex justify-content-center">
@@ -81,7 +81,7 @@ class CheckoutForm extends React.Component {
 
             <div className="form-check">
               <input type="checkbox" name="disclaimer" className="form-check-input" value={this.state.disclaimer} onChange={this.handleChange} />
-              <p>I verify that I did not use my real personal information and credit card. This application is purely for demonstration purposes only.</p>
+              <p>I verify that I did not use my real personal information and credit card number. This application is purely for demonstration purposes only and no real purchases will be made.</p>
 
               <div>
                 <button type="submit" className='btn btn-secondary'>Place Order</button>
