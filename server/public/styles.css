@@ -2,7 +2,11 @@
    font-family: 'Recursive', sans-serif;
 }
 
-h4 {
+.highlight {
+  background-color: #C8FFAE;;
+}
+
+h5 {
   font-family: 'Antic Slab', serif;
 }
 
@@ -15,11 +19,8 @@ p.title-text {
   font-size: 4rem;
 }
 
-span.title-text {
-  font-family: 'Antic Slab', serif;
-  font-size: 4rem;
-   background-color: #C8FFAE;;
-
+p.title-text > span {
+   font-family: 'Antic Slab', serif;
 }
 
 p.title-description {
@@ -27,14 +28,9 @@ p.title-description {
 }
 
 
-.highlight {
-  background-color: #C8FFAE;;
-}
-
 
 .header {
   background-color: #C8FFAE;
-
 }
 
 .contain {
