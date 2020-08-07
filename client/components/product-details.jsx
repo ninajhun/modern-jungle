@@ -30,11 +30,11 @@ class ProductDetails extends React.Component {
 
     if (this.state.product) {
       return (
-        <div className="card">
+        <div className="card mt-3">
 
           <div className="container">
             <div className="row">
-              <p className="text-muted" onClick = {this.backToCatalog}> &lt; Back to catalog</p>
+              <p className="text-muted mt-3" onClick = {this.backToCatalog}> &lt; Back to catalog</p>
             </div>
 
             <div className="row">
@@ -52,7 +52,7 @@ class ProductDetails extends React.Component {
                   {this.state.product.shortDescription}
                 </p>
 
-                <button className="btn btn-primary" onClick = {() => { this.props.addToCart(this.state.product); }}>Add to Cart</button>
+                <button className="btn btn-light" onClick = {() => { this.props.addToCart(this.state.product); }}>Add to Cart</button>
 
               </div>
             </div>
