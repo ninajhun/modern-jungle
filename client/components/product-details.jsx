@@ -38,14 +38,14 @@ class ProductDetails extends React.Component {
             </div>
 
             <div className="row">
-              <div className="col-5">
+              <div className="col-lg-5 col-sm-12">
                 <img src={this.state.product.image} className="img mr-2" alt="..."></img>
               </div>
-              <div className="col-7">
+              <div className="col-lg-7 col-sm-12">
                 <h5>
                   {this.state.product.name}
                 </h5>
-                <h6 className="t mb-2">
+                <h6 className="mb-2">
                   ${(this.state.product.price / 100).toFixed(2)}
                 </h6>
                 <p>
