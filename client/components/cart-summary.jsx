@@ -32,7 +32,7 @@ class CartSummary extends React.Component {
         </div>
 
         <div className="row d-flex justify-content-center mt-3">
-          <div className="col-9">
+          <div className="col-lg-9 col-sm-10">
             <h1 className='antic-slab'>My Cart</h1>
           </div>
         </div>
