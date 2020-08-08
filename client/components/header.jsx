@@ -19,15 +19,15 @@ class Header extends React.Component {
     this.props.cartItemCount === 1 ? items = 'Item' : items = 'Items';
 
     return (
-      <div className="row header py-2 align-items-center">
-        <div className="col-lg-10 col-md-9 col-sm-6">
+      <div className="row header py-2 align-items-center d-flex flex-nowrap">
+        <div className="col-lg-10 col-md-9 col-sm-9">
           <h4 className="ml-5 antic-slab" onClick={() => this.props.setView('catalog', {})}>
             <i className="fab fa-pagelines"></i>
             Urban Jungle
           </h4>
         </div>
 
-        <div className="col-lg-2 col-md-3 col-sm-6">
+        <div className="col-lg-2 col-md-3 col-sm-3 d-flex justify-content-between">
           <h6 onClick={this.openCart}>{this.props.cartItemCount} {items} <i className="fas fa-shopping-cart"></i></h6>
         </div>
 
