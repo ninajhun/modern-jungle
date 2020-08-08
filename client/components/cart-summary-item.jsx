@@ -5,15 +5,15 @@ function CartSummaryItem(props) {
     return null;
   } else {
     return (
-      <div className="card m-1 w-75">
+      <div className="card m-1 col-10">
         <div className="row align-items-center">
 
-          <div className="col">
+          <div className="col-lg-6 col-sm-12">
             <img src={props.item.image} className="card-img-top contain" alt="..."></img>
           </div>
 
-          <div className="col">
-            <h5 className="card-title">
+          <div className="col-lg-6 col-sm-12">
+            <h5 className="card-title ">
               {props.item.name}
             </h5>
             <h6 className="card-subtitle text-muted mb-2">
