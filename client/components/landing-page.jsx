@@ -5,7 +5,7 @@ function LandingPage(props) {
     <div className ="d-flex justify-content-center">
       <div className="modal-overlay"></div>
 
-      <div className="card landing-modal justify-content-center">
+      <div className="card landing-modal justify-content-center ">
         <div className="card-body">
           <p className="welcome-text text-center">welcome to </p>
           <p className="title-text text-center"><span className="highlight">Urban</span> Jungle</p>
