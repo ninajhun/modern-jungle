@@ -20,14 +20,14 @@ class Header extends React.Component {
 
     return (
       <div className="row header py-2 align-items-center">
-        <div className="col-10 ">
+        <div className="col-lg-10 col-md-9 col-sm-6">
           <h4 className="ml-5 antic-slab" onClick={() => this.props.setView('catalog', {})}>
             <i className="fab fa-pagelines"></i>
             Urban Jungle
           </h4>
         </div>
 
-        <div className="col-2">
+        <div className="col-lg-2 col-md-3 col-sm-6">
           <h6 onClick={this.openCart}>{this.props.cartItemCount} {items} <i className="fas fa-shopping-cart"></i></h6>
         </div>
 
