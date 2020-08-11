@@ -21,18 +21,27 @@ A full stack Node.js and React shopping cart app for house plants.
 
 ## Getting Started
 1. Clone the repo and navigate to the directory
-``` git clone https://github.com/ninajhun/wicked-sales-js.git
-    cd wicked-sales-js
+```shell 
+git clone https://github.com/ninajhun/wicked-sales-js.git
+cd wicked-sales-js
 ```
 2. Install all dependencies
- ```npm install```
+ ``` shell
+ npm install
+ ```
 
 3. Start your PostgreSQL server
-```sudo service postgresql start```
+```shell 
+sudo service postgresql start
+```
 
 4. Import existing database
-```npm run db:import```
+```shell 
+npm run db:import
+```
 
 5. Compile project
-```npm run dev```
+```shell 
+npm run dev
+```
 
