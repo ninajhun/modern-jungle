@@ -55,7 +55,7 @@ class CheckoutForm extends React.Component {
         </div>
 
         <div className="row mt-3 d-flex justify-content-center">
-          <div className="col-9">
+          <div className="col-lg-9 col-sm-10">
             <h1 className='antic-slab'>Checkout</h1>
             <h4>Order Total: ${totalPrice}  </h4>
           </div>
@@ -63,7 +63,7 @@ class CheckoutForm extends React.Component {
 
         <div className="row d-flex justify-content-center mt-3 mb-5 ">
 
-          <form className="col-9" encType="multipart/form-data" onSubmit ={this.handleSubmit}>
+          <form className="col-lg-9 col-sm-11" encType="multipart/form-data" onSubmit ={this.handleSubmit}>
             <div className="form-group">
               <label>Name</label>
               <input type='text' name="name" className="form-control" value={this.state.name} onChange ={this.handleChange} />
