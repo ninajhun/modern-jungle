@@ -25,14 +25,14 @@ A full stack Node.js and React shopping cart app for house plants.
     cd wicked-sales-js
 ```
 2. Install all dependencies
-``` npm install ```
+ ```npm install```
 
 3. Start your PostgreSQL server
-``` sudo service postgresql start ```
+```sudo service postgresql start```
 
 4. Import existing database
-``` npm run db:import ```
+```npm run db:import```
 
 5. Compile project
-``` npm run dev ```
+```npm run dev```
 
