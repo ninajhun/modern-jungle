@@ -44,4 +44,4 @@ npm run db:import
 ```shell 
 npm run dev
 ```
-
+6. Access application by going to [https://localhost:3000](https://localhost:3000) in the browser
