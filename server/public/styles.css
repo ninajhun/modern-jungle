@@ -39,6 +39,9 @@ p.enter-button > span:hover{
   background-color: #C8FFAE;
 }
 
+.header-name {
+  font-size: 1.5rem;
+}
 .contain {
   height: 200px;
   object-fit: contain;
@@ -84,6 +87,10 @@ p.enter-button > span:hover{
     padding: 5px;
     width: 95%;
   }
+
+  .header-name {
+  font-size: 1.25rem;
+}
 
 }
 
