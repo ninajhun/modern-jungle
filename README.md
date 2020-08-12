@@ -2,12 +2,11 @@
 A full stack Node.js and React shopping cart app for house plants.
 
 ## Features
-1. User can view a catalog of items
-2. User can view product details
-3. User can add a product to their cart
-4. User can view their cart
-5. User can place an order
-6. User can view total
+1. User can view a catalog of house plants for sale
+2. User can view the details of a plant
+3. User can add a plant to their cart
+4. User can view their cart summary
+5. User can place an order 
 
 ## Technologies Used
 * React.js
