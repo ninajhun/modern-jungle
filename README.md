@@ -21,7 +21,7 @@ A full stack Node.js and React shopping cart app for house plants.
 ## Getting Started
 1. Clone the repo and navigate to the directory
 ```shell 
-git clone https://github.com/ninajhun/wicked-sales-js.git
+git clone https://github.com/ninajhun/modern-jungle.git
 cd wicked-sales-js
 ```
 2. Install all dependencies
