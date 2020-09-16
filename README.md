@@ -45,4 +45,5 @@ npm run dev
 ```
 6. Access application by going to [https://localhost:3000](https://localhost:3000) in the browser
 
-![start-page] (/mj-preview.gif)
+## Preview
+![Modern Jungle Preview](https://github.com/ninajhun/modern-jungle/blob/master/mj-preview.gif)
