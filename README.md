@@ -44,3 +44,5 @@ npm run db:import
 npm run dev
 ```
 6. Access application by going to [https://localhost:3000](https://localhost:3000) in the browser
+
+![start-page] (/mj-preview.gif)
