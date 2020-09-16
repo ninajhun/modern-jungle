@@ -73,7 +73,18 @@ p.enter-button > span:hover{
   width: 50%;
 }
 
-/* Portrait */
+@media only screen and (max-width: 755px) {
+     .landing-modal {
+      position: fixed;
+      z-index: 1000;
+      top: 20%;
+      padding: 5px;
+      width: 75%;
+
+  }
+}
+
+/* iPhone Portrait */
 @media only screen
   and (min-device-width: 375px)
   and (max-device-width: 667px)
@@ -94,7 +105,7 @@ p.enter-button > span:hover{
 
 }
 
-/* Landscape */
+/* iPhone Landscape */
 @media only screen
   and (min-device-width: 375px)
   and (max-device-width: 667px)
