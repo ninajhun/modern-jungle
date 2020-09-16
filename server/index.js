@@ -182,15 +182,14 @@ app.post('/api/orders', (req, res, next) => {
                   "name",
                   "orderId",
                   "shippingAddress";
-
     `;
 
     const values = [req.session.cartId, req.body.name, req.body.creditCard, req.body.shippingAddress];
 
     db.query(sql, values)
       .then(result => {
-        res.status(201).json(result.rows[0]);
         delete req.session.cartId;
+        res.status(201).json(result.rows[0]);
       })
       .catch(err => next(err));
 
