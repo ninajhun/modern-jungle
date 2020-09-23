@@ -7,11 +7,12 @@ class CheckoutForm extends React.Component {
       name: '',
       creditCard: '',
       shippingAddress: '',
-      disclaimer: false
+      disclaimer: false,
+      isFormComplete: false
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.isFormComplete = this.isFormComplete.bind(this);
+    this.checkFormComplete = this.checkFormComplete.bind(this);
   }
 
   handleChange(event) {
@@ -31,13 +32,16 @@ class CheckoutForm extends React.Component {
       });
     }
 
-    this.isFormComplete();
-
+    this.checkFormComplete();
   }
 
-  isFormComplete() {
-    if (this.state.name !== '' && this.state.creditCard !== '' && this.state.shippingAddress !== '' && this.state.disclaimer) {
+  checkFormComplete() {
+    if (this.state.name && this.state.creditCard && this.state.shippingAddress && this.state.disclaimer) {
       console.log('hi');
+
+      this.setState({
+        isFormComplete: true
+      });
     }
   }
 
@@ -56,6 +60,11 @@ class CheckoutForm extends React.Component {
 
   render() {
     const totalPrice = this.props.cart.reduce((accumulator, current) => accumulator + (current.price / 100), 0);
+
+    let checkoutBtn;
+    this.state.isFormComplete ? checkoutBtn = <button type="submit" className='btn btn-secondary checkout-btn-complete'>Place Order</button>
+      : checkoutBtn = <button type="submit" className='btn btn-light checkout-btn-incomplete'>Place Order</button>;
+
     return (
       <div>
         <div className="row ml-5 mt-3">
@@ -92,7 +101,7 @@ class CheckoutForm extends React.Component {
               <p>I verify that I did not use my real personal information and credit card number. This application is purely for demonstration purposes only and no real purchases will be made.</p>
 
               <div>
-                <button type="submit" className='btn btn-secondary'>Place Order</button>
+                {checkoutBtn}
               </div>
 
             </div>
