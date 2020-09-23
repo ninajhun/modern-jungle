@@ -11,10 +11,10 @@ class CheckoutForm extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.isFormComplete = this.isFormComplete.bind(this);
   }
 
   handleChange(event) {
-
     if (event.target.name === 'disclaimer') {
       if (!this.state.disclaimer) {
         this.setState({
@@ -31,6 +31,14 @@ class CheckoutForm extends React.Component {
       });
     }
 
+    this.isFormComplete();
+
+  }
+
+  isFormComplete() {
+    if (this.state.name !== '' && this.state.creditCard !== '' && this.state.shippingAddress !== '' && this.state.disclaimer) {
+      console.log('hi');
+    }
   }
 
   handleSubmit(event) {
