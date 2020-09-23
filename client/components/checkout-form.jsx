@@ -7,14 +7,15 @@ class CheckoutForm extends React.Component {
       name: '',
       creditCard: '',
       shippingAddress: '',
-      disclaimer: false
+      disclaimer: false,
+      isFormComplete: false
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.checkFormComplete = this.checkFormComplete.bind(this);
   }
 
   handleChange(event) {
-
     if (event.target.name === 'disclaimer') {
       if (!this.state.disclaimer) {
         this.setState({
@@ -31,6 +32,17 @@ class CheckoutForm extends React.Component {
       });
     }
 
+    this.checkFormComplete();
+  }
+
+  checkFormComplete() {
+    if (this.state.name && this.state.creditCard && this.state.shippingAddress && this.state.disclaimer) {
+      console.log('hi');
+
+      this.setState({
+        isFormComplete: true
+      });
+    }
   }
 
   handleSubmit(event) {
@@ -48,10 +60,15 @@ class CheckoutForm extends React.Component {
 
   render() {
     const totalPrice = this.props.cart.reduce((accumulator, current) => accumulator + (current.price / 100), 0);
+
+    let checkoutBtn;
+    this.state.isFormComplete ? checkoutBtn = <button type="submit" className='btn btn-secondary'>Place Order</button>
+      : checkoutBtn = <button type="button" className='btn btn-light disabled'>Place Order</button>;
+
     return (
       <div>
         <div className="row ml-5 mt-3">
-          <p className="text-muted" onClick={() => this.props.setView('cart', {})}> &lt; Back to Cart </p>
+          <p className="text-muted back-button" onClick={() => this.props.setView('cart', {})}> &lt; Back to Cart </p>
         </div>
 
         <div className="row mt-3 d-flex justify-content-center">
@@ -84,7 +101,7 @@ class CheckoutForm extends React.Component {
               <p>I verify that I did not use my real personal information and credit card number. This application is purely for demonstration purposes only and no real purchases will be made.</p>
 
               <div>
-                <button type="submit" className='btn btn-secondary'>Place Order</button>
+                {checkoutBtn}
               </div>
 
             </div>

@@ -2,6 +2,7 @@
    font-family: 'Recursive', sans-serif;
 }
 
+/* TEXT */
 .highlight {
   background-color: #C8FFAE;;
   padding: 4px;
@@ -34,7 +35,20 @@ p.enter-button > span:hover{
 
 }
 
+/*POINTER AND HOVER*/
+.enter-button, .header-name, .product-card, .checkout, .back-button{
+  cursor: pointer;
+}
 
+.product-card {
+  transition: all 0.3s ease;
+}
+
+.product-card:hover{
+  transform: translate(0px, -10px);
+}
+
+/* HEADER */
 .header {
   background-color: #C8FFAE;
 }
@@ -54,6 +68,9 @@ p.enter-button > span:hover{
 }
 
 
+
+
+
 /* LANDING MODAL */
 .modal-overlay{
   position: fixed;
@@ -64,7 +81,6 @@ p.enter-button > span:hover{
   opacity: 0.7;
 }
 
-
 .landing-modal {
   position: fixed;
   z-index: 1000;
@@ -72,6 +88,9 @@ p.enter-button > span:hover{
   padding: 50px;
   width: 50%;
 }
+
+
+/* RESPONSIVENESS */
 
 @media only screen and (max-width: 755px) {
      .landing-modal {
