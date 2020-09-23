@@ -62,8 +62,8 @@ class CheckoutForm extends React.Component {
     const totalPrice = this.props.cart.reduce((accumulator, current) => accumulator + (current.price / 100), 0);
 
     let checkoutBtn;
-    this.state.isFormComplete ? checkoutBtn = <button type="submit" className='btn btn-secondary checkout-btn-complete'>Place Order</button>
-      : checkoutBtn = <button type="submit" className='btn btn-light checkout-btn-incomplete'>Place Order</button>;
+    this.state.isFormComplete ? checkoutBtn = <button type="submit" className='btn btn-secondary'>Place Order</button>
+      : checkoutBtn = <button type="button" className='btn btn-light disabled'>Place Order</button>;
 
     return (
       <div>
