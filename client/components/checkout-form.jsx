@@ -32,13 +32,11 @@ class CheckoutForm extends React.Component {
       });
     }
 
-    this.checkFormComplete();
+    setTimeout(() => this.checkFormComplete(), 1000);
   }
 
   checkFormComplete() {
     if (this.state.name && this.state.creditCard && this.state.shippingAddress && this.state.disclaimer) {
-      console.log('hi');
-
       this.setState({
         isFormComplete: true
       });
