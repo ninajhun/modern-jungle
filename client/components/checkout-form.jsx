@@ -12,7 +12,7 @@ class CheckoutForm extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.checkFormComplete = this.checkFormComplete.bind(this);
+    this.checkFormCompleteness = this.checkFormCompleteness.bind(this);
   }
 
   handleChange(event) {
@@ -32,10 +32,10 @@ class CheckoutForm extends React.Component {
       });
     }
 
-    setTimeout(() => this.checkFormComplete(), 1000);
+    setTimeout(() => this.checkFormCompleteness(), 1000);
   }
 
-  checkFormComplete() {
+  checkFormCompleteness() {
     if (this.state.name && this.state.creditCard && this.state.shippingAddress && this.state.disclaimer) {
       this.setState({
         isFormComplete: true

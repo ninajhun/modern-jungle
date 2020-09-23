@@ -15,7 +15,7 @@ export default class App extends React.Component {
         params: {}
       },
       cart: [],
-      isModalOpen: true // change back
+      isModalOpen: true
     };
     this.setView = this.setView.bind(this);
     this.getCartItems = this.getCartItems.bind(this);
