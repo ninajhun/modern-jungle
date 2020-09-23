@@ -35,9 +35,8 @@ p.enter-button > span:hover{
 
 }
 
-
 /*POINTER AND HOVER*/
-.enter-button, .header-name, .product-card, .checkout{
+.enter-button, .header-name, .product-card, .checkout, .back-button{
   cursor: pointer;
 }
 

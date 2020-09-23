@@ -51,7 +51,7 @@ class CheckoutForm extends React.Component {
     return (
       <div>
         <div className="row ml-5 mt-3">
-          <p className="text-muted" onClick={() => this.props.setView('cart', {})}> &lt; Back to Cart </p>
+          <p className="text-muted back-button" onClick={() => this.props.setView('cart', {})}> &lt; Back to Cart </p>
         </div>
 
         <div className="row mt-3 d-flex justify-content-center">
