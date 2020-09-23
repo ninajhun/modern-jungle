@@ -26,7 +26,7 @@ class Header extends React.Component {
             Modern Jungle
         </a>
 
-        <h6 className= "mr-5" onClick={this.openCart}>{this.props.cartItemCount} {items} <i className="fas fa-shopping-cart"></i></h6>
+        <h6 className= "mr-5 checkout" onClick={this.openCart}>{this.props.cartItemCount} {items} <i className="fas fa-shopping-cart"></i></h6>
 
       </div>
     );
