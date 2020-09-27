@@ -1,6 +1,9 @@
 # modern-jungle
 A full stack Node.js and React shopping cart app for house plants.
 
+## Live Link 
+https://modern-jungle.ninajhun.com/
+
 ## Features
 1. User can view a catalog of house plants for sale
 2. User can view the details of a plant
