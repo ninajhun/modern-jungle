@@ -25,7 +25,7 @@ https://modern-jungle.ninajhun.com/
 1. Clone the repo and navigate to the directory
 ```shell 
 git clone https://github.com/ninajhun/modern-jungle.git
-cd wicked-sales-js
+cd modern-jungle
 ```
 2. Install all dependencies
  ``` shell
