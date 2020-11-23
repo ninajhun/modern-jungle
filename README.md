@@ -1,6 +1,9 @@
 # modern-jungle
 A full stack Node.js and React shopping cart app for house plants.
 
+## Live Link 
+https://modern-jungle.ninajhun.com/
+
 ## Features
 1. User can view a catalog of house plants for sale
 2. User can view the details of a plant
@@ -22,7 +25,7 @@ A full stack Node.js and React shopping cart app for house plants.
 1. Clone the repo and navigate to the directory
 ```shell 
 git clone https://github.com/ninajhun/modern-jungle.git
-cd wicked-sales-js
+cd modern-jungle
 ```
 2. Install all dependencies
  ``` shell
