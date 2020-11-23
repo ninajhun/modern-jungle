@@ -37,10 +37,12 @@ class ProductDetails extends React.Component {
               <p className="text-muted mt-3 back-button" onClick = {this.backToCatalog}> &lt; Back to Catalog</p>
             </div>
 
-            <div className="row">
+            <div className="row p-5">
+
               <div className="col-lg-5 col-sm-12">
                 <img src={this.state.product.image} className="img mr-2" alt="..."></img>
               </div>
+
               <div className="col-lg-7 col-sm-12">
                 <h5>
                   {this.state.product.name}
@@ -52,19 +54,11 @@ class ProductDetails extends React.Component {
                   {this.state.product.shortDescription}
                 </p>
 
-                <button className="btn btn-light" onClick = {() => { this.props.addToCart(this.state.product); }}>Add to Cart</button>
+                <button className="btn btn-secondary" onClick = {() => { this.props.addToCart(this.state.product); }}>Add to Cart</button>
 
               </div>
             </div>
 
-            <div className="row">
-              <div className="col mt-2">
-                <p>
-                  {this.state.product.longDescription}
-                </p>
-              </div>
-
-            </div>
           </div>
 
         </div>
