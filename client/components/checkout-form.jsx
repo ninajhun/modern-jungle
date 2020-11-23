@@ -32,13 +32,18 @@ class CheckoutForm extends React.Component {
       });
     }
 
-    setTimeout(() => this.checkFormCompleteness(), 1000);
+    setTimeout(() => this.checkFormCompleteness());
+
   }
 
   checkFormCompleteness() {
     if (this.state.name && this.state.creditCard && this.state.shippingAddress && this.state.disclaimer) {
       this.setState({
         isFormComplete: true
+      });
+    } else {
+      this.setState({
+        isFormComplete: false
       });
     }
   }
@@ -78,10 +83,10 @@ class CheckoutForm extends React.Component {
 
         <div className="row d-flex justify-content-center mt-3 mb-5 ">
 
-          <form className="col-lg-9 col-sm-11" encType="multipart/form-data" onSubmit ={this.handleSubmit}>
+          <form className="col-lg-9 col-sm-11" encType="multipart/form-data" onSubmit={this.handleSubmit}>
             <div className="form-group">
               <label>Name</label>
-              <input type='text' name="name" className="form-control" value={this.state.name} onChange ={this.handleChange} />
+              <input type='text' name="name" className="form-control" value={this.state.name} onChange={this.handleChange} />
             </div>
 
             <div className="form-group">
